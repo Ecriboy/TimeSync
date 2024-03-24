@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    
+    <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+</head>
+<body>
+        <div class="NavBar">
+            <h1 class="linhasCON">
+                <svg class="linhasEST" id="linhasDiv">
+                    <path class="linhas" d = "M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z">
+                    </path>
+                </svg>
+            </h1>
+            <h2 class="estlogo">
+                <img class="logo" src="{{ url_for('static', filename='TimeSync.png')}}" >
+            </h2>
+            <div class="sidebar" id="sidebar">
+                <svg class="linhasEST2">
+                    <path class="linhas2" d = "M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z">
+                    </path>
+                </svg>
+            </div>
+
+        <script>
+            document.getElementById("linhasDiv").addEventListener("click", function() {
+                document.getElementById("sidebar").classList.toggle("show"); // Adiciona ou remove a classe "show" da div da barra lateral
+            });
+        </script>
+        <script>
+            document.getElementById("sidebar").addEventListener("click", function() {
+                document.getElementById("sidebar").classList.toggle("show"); // Adiciona ou remove a classe "show" da div da barra lateral
+            });
+        </script>
+        </div>
+</body>
+</html>
