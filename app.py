@@ -2,7 +2,7 @@
 Este é um módulo Flask simples para renderizar uma página inicial.
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -15,10 +15,38 @@ def index():
     Retorna:
         str: Uma mensagem de boas-vindas.
     """
-    title = "TimeSync"
-    message = "Sejam bem vindos ao siterrrr"
-    return render_template('TimeSync.html', title=title,
-                           message=message)
+
+    mes = request.args.get('mes', default='Janeiro')  # Obtém o mês da consulta, padrão é Janeiro
+    title = mes
+
+    feriados = {
+        6: "Feriado",
+        7: "Feriado",
+        13: "Feriado",
+        14: "Feriado",
+        20: "Feriado",
+        21: "Feriado",
+        27: "Feriado",
+        28: "Feriado"
+    }
+
+    dias = []
+    # Lógica para determinar o número de dias no mês atual
+    if mes in ["Janeiro", "Março", "Maio", "Julho", "Agosto", "Outubro", "Dezembro"]:
+        num_dias = 31
+    elif mes == "Fevereiro":
+        num_dias = 28  # Considerando um ano não bissexto para simplificar
+    else:
+        num_dias = 30
+
+    for i in range(1, num_dias + 1):
+        dia = {'id': i, 'dia': i, 'class': '', 'feriado': ''}
+        if i in feriados:
+            dia['class'] = 'fds'
+            dia['feriado'] = feriados[i]
+        dias.append(dia)
+
+    return render_template('TimeSync.html', title=title, dias=dias)
 
 
 if __name__ == '__main__':

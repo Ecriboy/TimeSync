@@ -2,20 +2,26 @@
     text-align: center;
     width: 100%;
     height: 100%;
-
+    user-select: none;
 }
 
 .NavBar {
     width: 100%;
     background-color: #5BC0BE;
-    height: 90px;
+    height: 9%;
     position: absolute;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     align-items: center;
     justify-content: center;
     display: flex;
 }
+
 body {
+    margin: 0;
+    padding: 0;
+}
+
+.corpagina {
     background-color: #3a506b;
     margin: 0;
     padding: 0;
@@ -52,11 +58,6 @@ body {
     margin-left: 20px;
 }
 
-h1 {
-    width: fit-content;
-    height: fit-content;
-}
-
 .container {
     display: flex;
     justify-content: center;
@@ -66,6 +67,8 @@ h1 {
 
 .linhasCON {
     flex-grow: 1;
+    width: fit-content;
+    height: fit-content;
 }
 
 .sidebar {
@@ -80,7 +83,7 @@ h1 {
 }
 
 .sidebar.show {
-    width: 75px; /* Define a largura da barra lateral como 90% quando a classe "show" é adicionada */
+    width: 4%; /* Define a largura da barra lateral como 90% quando a classe "show" é adicionada */
 }
 
 .linhas2 {
@@ -103,6 +106,47 @@ h1 {
 .linhasEST2 {
     width: 27px;
     height: 23px;
-    margin-top: 33px;
+    margin-top: 31px;
     margin-left: 20px;
+}
+
+.Cal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.CalDiv {
+    margin-top: 20%;
+    margin-right: 50%;
+}
+
+.tabela {
+    background-color: #5B718B;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.ColTit {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.dia {
+    font-weight: bolder;
+    background-color: #5B718B;
+}
+
+.fds {
+    color: #6FFFE9;
+}
+
+#dias {
+    font-weight: bolder;
+    text-align: center;
+    margin-right: 50%;
 }

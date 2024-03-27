@@ -3,38 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>TimeSync</title>
     
     <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
 </head>
-<body>
+<body class="corpagina">
+    <header>
         <div class="NavBar">
             <h1 class="linhasCON">
                 <svg class="linhasEST" id="linhasDiv">
-                    <path class="linhas" d = "M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z">
-                    </path>
+                    <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
                 </svg>
             </h1>
             <h2 class="estlogo">
                 <img class="logo" src="{{ url_for('static', filename='TimeSync.png')}}" >
             </h2>
             <div class="sidebar" id="sidebar">
-                <svg class="linhasEST2">
-                    <path class="linhas2" d = "M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z">
-                    </path>
+                <svg class="linhasEST2" id="LinhasDiv2">
+                    <path class="linhas2" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
                 </svg>
             </div>
-
-        <script>
-            document.getElementById("linhasDiv").addEventListener("click", function() {
-                document.getElementById("sidebar").classList.toggle("show"); // Adiciona ou remove a classe "show" da div da barra lateral
-            });
-        </script>
-        <script>
-            document.getElementById("sidebar").addEventListener("click", function() {
-                document.getElementById("sidebar").classList.toggle("show"); // Adiciona ou remove a classe "show" da div da barra lateral
-            });
-        </script>
         </div>
+    </header>
+    <main>
+        <div class="Cal">
+            <div class="CalDiv">
+                <table class="tabela">
+                    <tr>
+                        <td colspan="7" class="ColTit">
+                            <button onclick="MudarMes('prev')">Anterior</button>
+                            {{ title }} 2024
+                            <button onclick="MudarMes('next')">Próximo</button>
+                        </td>
+                    </tr>
+                    <tr class="dia">
+                        <td>dom</td>
+                        <td>ter</td>
+                        <td>qua</td>
+                        <td>qui</td>
+                        <td>sex</td>
+                        <td>sab</td>
+                        <td>seg</td>
+                    </tr>
+                    {% for dia in dias %}
+                        <td id="{{ dia['id'] }}" {% if dia['class'] %}class="{{ dia['class'] }}" {% endif %}
+                        {% if dia['feriado'] %}name="{{ dia['feriado'] }}" onmouseover="show(this)"{% endif %}>
+                        {{ dia['dia'] }}
+                        </td>
+                        {% if loop.index % 7 == 0 %}
+                            </tr><tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div id="dias"></div>    
+    </main>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        document.getElementById("linhasDiv").addEventListener("click", function() {
+            document.getElementById("sidebar").classList.toggle("show");
+        });
+
+        document.getElementById("LinhasDiv2").addEventListener("click", function() {
+            document.getElementById("sidebar").classList.toggle("show");
+        });
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        function MudarMes(direction) {
+            const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
+            const Meses = [
+                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            ];
+            const currentIndex = Meses.indexOf(MesAtual);
+
+            let newIndex;
+            if (direction === 'prev') {
+                newIndex = currentIndex === 0 ? 11 : currentIndex - 1;
+            } else {
+                newIndex = currentIndex === 11 ? 0 : currentIndex + 1;
+            }
+
+            const NovoMes = Meses[newIndex];
+            window.location.href = `/?mes=${NovoMes}`; // Redireciona para a página com o novo mês
+        }
+    </script>
 </body>
 </html>
