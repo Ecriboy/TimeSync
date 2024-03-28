@@ -16,18 +16,19 @@ def index():
         str: Uma mensagem de boas-vindas.
     """
 
-    mes = request.args.get('mes', default='Janeiro')  # Obtém o mês da consulta, padrão é Janeiro
+    mes = request.args.get('mes', default='Janeiro')  # Obtém o mês, padrão é Janeiro
     title = mes
 
     feriados = {
-        6: "Feriado",
         7: "Feriado",
-        13: "Feriado",
+        1: "Feriado",
         14: "Feriado",
-        20: "Feriado",
+        8: "Feriado",
+        15: "Feriado",
         21: "Feriado",
-        27: "Feriado",
-        28: "Feriado"
+        22: "Feriado",
+        28: "Feriado",
+        29: "Feriado"
     }
 
     dias = []
@@ -44,6 +45,8 @@ def index():
         if i in feriados:
             dia['class'] = 'fds'
             dia['feriado'] = feriados[i]
+        else:
+            dia['class'] = 'dias'
         dias.append(dia)
 
     return render_template('TimeSync.html', title=title, dias=dias)

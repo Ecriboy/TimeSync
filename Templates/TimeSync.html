@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TimeSync</title>
-    
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
 </head>
 <body class="corpagina">
@@ -31,29 +31,42 @@
                 <table class="tabela">
                     <tr>
                         <td colspan="7" class="ColTit">
-                            <button onclick="MudarMes('prev')">Anterior</button>
-                            {{ title }} 2024
-                            <button onclick="MudarMes('next')">Próximo</button>
+                            <svg class="Butback" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" button onclick="MudarMes('prev')">
+                                <path d="M7.21289 0.5L0 8L7.21289 15.5L9 13.6418L3.57422 8L9 2.35824L7.21289 0.5Z" fill="#6FFFE9">
+                            </svg>
+                                <style>
+                                    .TitMes{font-family: 'Nunito'}             
+                                </style>                          
+                                <span class="TitMes">{{ title }} 2024</span>
+                            <svg class="Butfoward" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" button onclick="MudarMes('next')">                                       
+                                <path d="M1.78711 15.5L9 8L1.78711 0.5L0 2.35825L5.42578 8L0 13.6418L1.78711 15.5Z" fill="#6FFFE9">
+                            </svg>
                         </td>
                     </tr>
                     <tr class="dia">
-                        <td>dom</td>
-                        <td>ter</td>
-                        <td>qua</td>
-                        <td>qui</td>
-                        <td>sex</td>
-                        <td>sab</td>
-                        <td>seg</td>
+                        <style>
+                            .dia{font-family: 'Nunito'}             
+                        </style>
+                        <td>DOM</td>
+                        <td>SEG</td>
+                        <td>TER</td>
+                        <td>QUA</td>
+                        <td>QUI</td>
+                        <td>SEX</td>
+                        <td>SAB</td>
                     </tr>
                     {% for dia in dias %}
                         <td id="{{ dia['id'] }}" {% if dia['class'] %}class="{{ dia['class'] }}" {% endif %}
                         {% if dia['feriado'] %}name="{{ dia['feriado'] }}" onmouseover="show(this)"{% endif %}>
-                        {{ dia['dia'] }}
+                        <span class="dias"><style>
+                            .dias{font-family: 'Nunito'}             
+                        </style>{{ dia['dia'] }}</span>
                         </td>
                         {% if loop.index % 7 == 0 %}
                             </tr><tr>
                         {% endif %}
                     {% endfor %}
+                    
                 </table>
             </div>
         </div>
