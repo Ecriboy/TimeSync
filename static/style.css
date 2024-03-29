@@ -344,6 +344,7 @@ body {
     margin-top: 11%;
 }
 
+
 .GrupoTit {
     appearance: none;
     border: none;
@@ -366,45 +367,6 @@ body {
     color: #FFFFFF;
 }
 
-.GruposEST {
-    margin-top: 5%;
-    max-width: 520px;
-    max-height: 520px;
-    width: 100%;
-    height: 100vh;
-    background-color: #1C2541;
-    border-radius: 8px;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.AltaEST{
-    
-}
-
-.Alta {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-top: 5%;
-    margin-bottom: 1%;
-    padding: 0;
-    user-select: none;
-}
-
-.Alli {
-    width: 327px;
-    text-align: center;
-    margin-top: 0;
-    height: 2px;
-}
-
 .Lupa {
     enable-background: 0 0 48 48;
     pointer-events: none; 
@@ -425,6 +387,325 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
+}
+
+.GruposEST {
+    margin-top: 5%;
+    max-width: 520px;
+    max-height: 520px;
+    width: 100%;
+    height: 100vh;
+    background-color: #1C2541;
+    border-radius: 8px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.AltaEST{
+    max-height: 243px;
+    max-width: 439px;
+    height: 100vh;
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Alta {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    padding: 0;
+    user-select: none;
+}
+
+.Alli {
+    width: 327px;
+    text-align: center;
+    margin-top: 0;
+    max-height: 3px;
+    height: 100vh;
+    overflow: visible;
+}
+
+.Aline{
+    stroke-width: 1px;
+}
+
+.GCont {
+    width: 100%;
+    max-width: 439px;
+    max-height: 205px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px; /* Espaçamento entre as colunas */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.IconEST{
+    max-height: 195px;
+    height: 100%;
+    max-width: 69px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Icon{
+    max-width: 69px;
+    width: 100%;
+    max-height: 55px;
+    height: 100vh;
+    margin-top: 20%;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.IconT, .MemNum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.IT, .Num {
+    margin: 0; /* Remova o margin-top para ajustar o alinhamento vertical */
+}
+
+
+.IconT {
+    max-height: 159px;
+    max-width: 99px;
+    width: 100%;
+    color: #FFFFFF;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 22px;
+    text-align: center;
+    display: grid; /* Alterado para grid */
+    align-items: center; /* Adicionado */
+    align-content: space-between;
+    margin-top: 5%;
+}
+
+.IT {
+    height: auto; /* Adicionado */
+    max-width: 200px;
+    width: 100%;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.MembrosEST {
+    max-width: 138px;
+    max-height: 186px;
+    height: 100%;
+    width: 100%;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    position: relative;
+    align-content: space-between;
+}
+
+.MemTit{
+    max-height: 25px;
+    height: 100vh;
+    width: 100%;
+    margin-top: 30%;
+}
+
+.MemNum {
+    max-width: 125px;
+    width: 100%;
+    height: auto;
+    max-height: 21px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-align: center;
+    justify-content: center;
+    align-self: flex-end; /* Alinha os membros na parte inferior */
+    margin-right: 1%;
+}
+
+.Num {
+    max-width: 138px;
+    width: 100%;
+    max-height: 21px;
+    height: 100vh;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 18%;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end; /* Alinha os membros na parte inferior */
+}
+
+.GCont2 {
+    width: 100%;
+    max-width: 431px;
+    max-height: 182px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px; /* Espaçamento entre as colunas */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.IconEST2 {
+    max-height: 195px;
+    height: 100%;
+    max-width: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+
+.Icon2 {
+    max-width: 55px;
+    width: 100%;
+    max-height: 55px;
+    height: 100vh;
+    margin-top: 20%;
+    margin-right: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.IconT2 {
+    max-height: 83px;
+    max-width: 273px;
+    width: 100%;
+    color: #FFFFFF;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 22px;
+    text-align: center;
+    display: grid; /* Alterado para grid */
+    align-items: center; /* Adicionado */
+    align-content: space-between;
+    justify-content: center;
+}
+
+.IT2 {
+    height: auto; /* Adicionado */
+    max-width: 200px;
+    width: 100%;
+    padding: 0;
+    margin-top: 0%;
+    margin-bottom: 30%;
+    vertical-align: middle;
+}
+
+.MembrosEST2 {
+    max-width: 131px;
+    max-height: 111px;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    position: relative;
+    align-content: space-between;
+}
+
+.Num2 {
+    max-width: 138px;
+    width: 100%;
+    max-height: 25px;
+    height: 100vh;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    margin-bottom: 0;
+}
+
+.Recomendado {
+    
+    max-height: 182px;
+    max-width: 431px;
+    height: 100vh;
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.Alta2 {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 10%;
+    margin-bottom: 1%;
+    padding: 0;
+    user-select: none;
 }
 
 /* 

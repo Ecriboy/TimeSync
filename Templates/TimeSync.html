@@ -28,12 +28,16 @@
                     </svg>
                 </h1>
                 <h2 class="ItensEST">
-                    <img class="Item" id="Item1" src="{{ url_for('static', filename='Home.png')}}" >
+                    <a href="/Home">
+                        <img class="Item" id="Item1" src="{{ url_for('static', filename='Home.png')}}" >
+                    </a>
                     <img class="Item" id="Item2" src="{{ url_for('static', filename='About.png')}}" >
                     <img class="Item" id="Item3" src="{{ url_for('static', filename='Project.png')}}" >
                 </h2>
                 <h3 class="ExitEST">
-                    <img class="Exit" src="{{ url_for('static', filename='Exit.png')}}" >
+                    <a href="/Logout" >
+                        <img class="Exit" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" >
+                    </a>
                 </h3>
             </div>
         </div>
@@ -104,14 +108,56 @@
                         <div class="AltaEST">
                             <p class="Alta">Grupos em alta 🔥</p>
                             <svg class="Alli" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="0.5" x2="327" y2="0.5" stroke="#6FFFE9"/>
-                            </svg> 
+                                <line class="Aline" y1="0.5" x2="327" y2="0.5" stroke="#6FFFE9"/>
+                            </svg>
+                            <div class="MemNum">
+                                <p class="MemTit">Membros</p>
+                            </div>
+                            <div class="GCont">
+                                <div class="IconEST">
+                                    <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
+                                    <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
+                                    <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
+                                </div>
+                                <div class="IconT">
+                                    <p class="IT">PLACEHOLDER</p>
+                                    <p class="IT">PLACEHOLDER</p>
+                                    <p class="IT">PLACEHOLDER</p>
+                                </div>
+                                <div class="MembrosEST"> 
+                                        <p class="Num">100</p>
+                                        <p class="Num">100</p>
+                                        <p class="Num">100</p>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="Recomendado">
+                            <p class="Alta2">Recomendados para você</p>
+                            <svg class="Alli" xmlns="http://www.w3.org/2000/svg">
+                                <line class="Aline" y1="0.5" x2="327" y2="0.5" stroke="#6FFFE9"/>
+                            </svg>
+                            <div class="GCont2">
+                                <div class="IconEST2">
+                                    <img class="Icon2" src="{{ url_for('static', filename='Icon2.png')}}">
+                                    <img class="Icon2" src="{{ url_for('static', filename='Icon2.png')}}">
+                                </div>
+                                <div class="IconT2">
+                                    <p class="IT2">PLACEHOLDER</p>
+                                    <p class="IT2">PLACEHOLDER</p>
+                                </div>
+                                <div class="MembrosEST2"> 
+                                        <p class="Num2">100</p>
+                                        <p class="Num2">100</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                       
                         </div>                            
                     </div>
                 </div>
             </div>    
     </main>
-    
+
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script>
                 document.getElementById("linhasDiv").addEventListener("click", function() {
@@ -140,7 +186,7 @@
                     }
 
                     const NovoMes = Meses[newIndex];
-                    window.location.href = `/?mes=${NovoMes}`; // Redireciona para a página com o novo mês
+                    window.location.href = `/Home?mes=${NovoMes}`; // Redireciona para a página com o novo mês
                 }
             </script>
             <script>

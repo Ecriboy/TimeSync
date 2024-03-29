@@ -7,7 +7,15 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/Logout')
+def logout():
+    """
+    Pagina de logout e login tambem porra
+    """
+    return render_template('Logout.html')
+
+
+@app.route('/Home')
 def index():
     """
     Função para renderizar a página inicial.
