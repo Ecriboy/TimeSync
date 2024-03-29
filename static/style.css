@@ -1,79 +1,8 @@
-.logo {
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    user-select: none;
-}
+/* Pagina Geral */
 
 .Principal {
     display: flex;
-}
-
-.NavBar {
-    width: 100%;
-    background-color: #5BC0BE;
-    height: 9%;
-    position: fixed;
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    top: 0;
-}
-
-.User {
-    width: 100%;
-    height: 100%;
-    max-width: 72px;
-    max-height: 73px;
-}
-
-.UserEST{
-    width: auto;
-    height: auto;
-    margin-right: 2%;
-}
-
-.UserEST:hover .User {
-    cursor: pointer;
-}
-
-.Item{
-    width: 100%;
-    height: 100%;
-    max-width: 50px;
-    max-height: 50px;
-    margin-bottom: 25%;
-}
-
-.ItensEST {
-    text-align: center;
-    display: block;
-}
-
-.ItensEST:hover .Item {
-    cursor: pointer;
-}
-
-.Exit {
-    width: 100%;
-    height: 100%;
-    max-width: 50px;
-    max-height: 50px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin-left: 20px; /* Ajuste o valor conforme necessário */
-    margin-bottom: 20px; /* Ajuste o valor conforme necessário */
-}
-
-.ExitEST {
-    text-align: center;
-    display: block;
-}
-
-.ExitEST:hover .Exit {
-    cursor: pointer;
+    flex-direction: column;
 }
 
 body {
@@ -86,6 +15,29 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Header */
+
+.NavBar {
+    width: 100%;
+    background-color: #5BC0BE;
+    height: 9%;
+    position: fixed;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    top: 0;
+    user-select: none;
+}
+
+.logo {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+
 .estlogo {
     width: 25%;
     height: auto;
@@ -94,11 +46,17 @@ body {
     position: absolute;
 }
 
-.linhas {
-    stroke-width: 2;
-    stroke: black;
-    fill: none;
-    margin-right: 20px;
+.linhasCON {
+    flex-grow: 1;
+    width: fit-content;
+    height: fit-content;
+}
+
+.linhasEST {
+    width: 27px;
+    height: 23px;
+    margin-top: 0px;
+    margin-left: 25px;
 }
 
 .linhasEST:hover .linhas {
@@ -111,24 +69,28 @@ body {
     cursor: pointer;
 }
 
-.linhasEST {
-    width: 27px;
-    height: 23px;
-    margin-top: 0px;
-    margin-left: 25px;
+.linhas {
+    stroke-width: 2;
+    stroke: black;
+    fill: none;
+    margin-right: 20px;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.UserEST{
+    width: auto;
     height: auto;
+    margin-right: 2%;
 }
 
-.linhasCON {
-    flex-grow: 1;
-    width: fit-content;
-    height: fit-content;
+.UserEST:hover .User {
+    cursor: pointer;
+}
+
+.User {
+    width: 100%;
+    height: 100%;
+    max-width: 72px;
+    max-height: 73px;
 }
 
 .sidebar {
@@ -146,11 +108,12 @@ body {
     width: 4%; /* Define a largura da barra lateral como 90% quando a classe "show" é adicionada */
 }
 
-.linhas2 {
-    stroke-width: 2;
-    stroke: #6FFFE9;
-    fill: none;
-    margin-right: 20px;
+.linhasEST2 {
+    width: 27px;
+    height: 23px;
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-bottom: 25px;
 }
 
 .linhasEST2:hover .linhas2 {
@@ -163,20 +126,101 @@ body {
     cursor: pointer;
 }
 
-.linhasEST2 {
-    width: 27px;
-    height: 23px;
-    margin-top: 10px;
-    margin-left: 25px;
-    margin-bottom: 25px;
+.linhas2 {
+    stroke-width: 2;
+    stroke: #6FFFE9;
+    fill: none;
+    margin-right: 20px;
 }
 
-.Cal {
+.ItensEST {
+    text-align: center;
+    display: block;
+}
+
+.ItensEST:hover .Item {
+    cursor: pointer;
+}
+
+.Item{
+    width: 100%;
+    height: 100%;
+    max-width: 50px;
+    max-height: 50px;
+    margin-bottom: 25%;
+}
+
+.ExitEST {
+    text-align: center;
+    display: block;
+}
+
+.ExitEST:hover .Exit {
+    cursor: pointer;
+}
+
+
+.Exit {
+    width: 100%;
+    height: 100%;
+    max-width: 50px;
+    max-height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 20px; /* Ajuste o valor conforme necessário */
+    margin-bottom: 20px; /* Ajuste o valor conforme necessário */
+}
+
+
+/* Main */
+
+.Slogan {
+    font-family: 'Overlock SC';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 26px;
+    line-height: 26px;
+    align-self: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 8%;
+}
+
+
+/* 
+    Começo da parte onde fica o calendario e os grupos
+*/
+
+.Centro {
+    max-width: 1380px;
+    max-height: 602px;
+    width: 100%;
+    height: 100%;
     display: flex;
-    margin-left: 10%;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 
+    Fim da parte onde fica o calendario e os grupos
+*/
+
+
+/* 
+    Começo da estilização do calendario
+*/
+
+.Cal {
+    margin-right: 15%;
+    display: flex;
     align-items: center;
     height: 100vh;
     width: 100vh;
+    max-height: 600px;
+    max-width: 608px;
+
 }
 
 .TitCal {
@@ -190,6 +234,7 @@ body {
     color: #FFFFFF;
     border-bottom: 1px solid #FFFFFF;
     padding-bottom: 10px;
+    user-select: none;
 }
 
 .CalDiv {
@@ -265,6 +310,7 @@ body {
     color: #5BC0BE;
     font-weight: bold;
     position: relative;
+    user-select: none;
 }
 
 .Linha {
@@ -278,7 +324,50 @@ body {
     margin-bottom: 2%;
 }
 
+/* 
+    Fim da estilização do calendario
+*/
+
+/* 
+    Começo da estilização dos Grupos
+*/
+
 .Grupos {
+    max-width: 520px;
+    max-height: 602px;
+    width: 100%;
+    height: 100vh;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 11%;
+}
+
+.GrupoTit {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid #FFFFFF;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    width: 100%;
+    max-width: 406px;
+    font-size: 24px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    padding-bottom: 1%;
+}
+
+.GrupoTit::placeholder {
+    color: #FFFFFF;
+}
+
+.GruposEST {
+    margin-top: 5%;
     max-width: 520px;
     max-height: 520px;
     width: 100%;
@@ -291,6 +380,9 @@ body {
     align-items: center;
 }
 
+.AltaEST{
+    
+}
 
 .Alta {
     font-family: 'Nunito';
@@ -300,12 +392,41 @@ body {
     line-height: 22px;
     text-align: center;
     color: #FFFFFF;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    padding: 0;
+    user-select: none;
 }
 
 .Alli {
     width: 327px;
     text-align: center;
-    margin-top: -4%;
+    margin-top: 0;
+    height: 2px;
 }
 
+.Lupa {
+    enable-background: 0 0 48 48;
+    pointer-events: none; 
+    display: inherit; 
+    width: 100%; 
+    height: 100%;
+    max-width: 48px;
+    max-height: 48px;
+    stroke: #5B718B;
+    margin-right: 3%;
+}
 
+.Search {
+    max-width: 521px;
+    max-height: 52px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+    Fim da estilização dos Grupos
+*/
