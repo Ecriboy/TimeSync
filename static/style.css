@@ -108,6 +108,142 @@ body {
     width: 4%; /* Define a largura da barra lateral como 90% quando a classe "show" é adicionada */
 }
 
+
+.SairTamanhoEST {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.SairTamanhoEST.show {
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    position: absolute;
+    display: flex;
+}
+
+.SairBack {
+    max-width: 0;
+    max-height: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+    justify-content: center;
+}
+
+.SairBack.show {
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    mix-blend-mode: multiply;
+    background-color: #0B132B;
+    position: absolute;
+    display: flex;
+}
+
+.Sair { 
+    width: 100%;
+    height: 100%;
+    max-width: 571px;
+    max-height: 595px;
+    background-color: #5B718B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    border-radius: 8px;
+    border: 2px solid #6FFFE9;
+    align-items: center;
+}
+
+.SairT { 
+    width: 100%;
+    height: 100%; 
+    max-width: 571px;
+    max-height: 595px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    display: flex;
+    text-align: center;
+    color: #FFFFFF;
+    user-select: none;
+    margin-top: 10%;
+}
+
+.ContainerButton {
+    width: 100%;
+    height: 100%;
+    max-width: 473px;
+    max-height: 96px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20%;
+}
+
+.CancelButton {
+    width: 100%;
+    height: 100%;
+    max-height: 96px;
+    max-width: 209px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #1C2541;
+    background: #6FFFE9;
+    border-radius: 8px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.CancelButton:hover {
+    cursor: pointer;
+}
+
+.SairButton {
+    width: 100%;
+    height: 100%;
+    max-width: 209px;
+    max-height: 96px;
+    background: #3A506B;
+    border: 2px solid #5BC0BE;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    justify-content: center;
+    user-select: none;
+    text-decoration: none;
+}
+
+.SairButton:hover {
+    cursor: pointer;
+}
+
+
 .linhasEST2 {
     width: 27px;
     height: 23px;
@@ -262,7 +398,6 @@ body {
     text-align: center;
     padding: 0;
     margin-top: 0;
-    position: relative;
 }
 
 .dia {
@@ -309,16 +444,11 @@ body {
     font-size: 22px;
     color: #5BC0BE;
     font-weight: bold;
-    position: relative;
     user-select: none;
 }
 
 .Linha {
-    position: absolute;
-    bottom: 0; /* Alinha a linha com a borda inferior da célula */
-    left: 50%; /* Posiciona a linha no centro horizontal */
-    transform: translateX(-50%); /* Centraliza a linha horizontalmente */
-    width: 115%; /* Define a largura da linha igual à largura da célula */
+    width: 100%; /* Define a largura da linha igual à largura da célula */
     height: 1px; /* Define a altura da linha */
     background-color: #E0E0E0; /* Cor da linha */
     margin-bottom: 2%;
@@ -530,7 +660,6 @@ body {
     text-align: center;
     color: #FFFFFF;
     margin: 0;
-    position: relative;
     align-content: space-between;
 }
 
@@ -658,7 +787,6 @@ body {
     text-align: center;
     color: #FFFFFF;
     margin: 0;
-    position: relative;
     align-content: space-between;
 }
 

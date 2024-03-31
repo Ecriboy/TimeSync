@@ -35,15 +35,34 @@
                     <img class="Item" id="Item3" src="{{ url_for('static', filename='Project.png')}}" >
                 </h2>
                 <h3 class="ExitEST">
-                    <a href="/Logout" >
-                        <img class="Exit" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" >
-                    </a>
-                </h3>
+                        <img class="Exit" id="LogOut" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" >
+                </h3>   
             </div>
         </div>
+        <div class="SairBack" id="SairBack">
+
+        </div>
+        <div class="SairTamanhoEST" id="SairTamanhoEST">
+            <div class="Sair">
+                <div class="SairT">
+                        Deseja realizar logout?
+                </div>
+                <div class="ContainerButton">
+                    <div class="CancelButton" id="CancelButton">
+                        Continuar navegando?
+                    </div>
+                    <a class="SairButton" href="/Logout">
+                        Sim
+                    </a>
+                </div>
+            </div> 
+        </div>   
     </header>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+
+    </script>
+
     <script>
         document.getElementById("linhasDiv").addEventListener("click", function() {
             document.getElementById("sidebar").classList.toggle("show");
@@ -53,7 +72,11 @@
             document.getElementById("sidebar").classList.toggle("show");
         });
     </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}">
+
+    </script>
+
     <script>
         function MudarMes(direction) {
             const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
@@ -71,9 +94,10 @@
             }
 
             const NovoMes = Meses[newIndex];
-            window.location.href = `/?mes=${NovoMes}`; // Redireciona para a página com o novo mês
+            window.location.href = `/Home?mes=${NovoMes}`; // Redireciona para a página com o novo mês
         }
     </script>
+
     <script>
         const input = document.getElementById('GrupoTit');
 
@@ -90,4 +114,22 @@
                 input.setAttribute('placeholder', 'PESQUISAR GRUPOS');
             }
         });
+    </script>
+
+    <script>
+                    document.getElementById("LogOut").addEventListener("click", function() {
+                        document.getElementById("SairTamanhoEST").classList.toggle("show");
+                    });
+
+                    document.getElementById("LogOut").addEventListener("click", function() {
+                        document.getElementById("SairBack").classList.toggle("show");
+                    });
+
+                    document.getElementById("CancelButton").addEventListener("click", function() {
+                        document.getElementById("SairTamanhoEST").classList.toggle("show");
+                    });
+    
+                    document.getElementById("CancelButton").addEventListener("click", function() {
+                        document.getElementById("SairBack").classList.toggle("show");
+                    });
     </script>

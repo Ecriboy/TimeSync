@@ -35,15 +35,31 @@
                     <img class="Item" id="Item3" src="{{ url_for('static', filename='Project.png')}}" >
                 </h2>
                 <h3 class="ExitEST">
-                    <a href="/Logout" >
-                        <img class="Exit" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" >
-                    </a>
-                </h3>
+                        <img class="Exit" id="LogOut" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" >
+                </h3>   
             </div>
         </div>
+        <div class="SairBack" id="SairBack">
+
+        </div>
+        <div class="SairTamanhoEST" id="SairTamanhoEST">
+            <div class="Sair">
+                <div class="SairT">
+                        Deseja realizar logout?
+                </div>
+                <div class="ContainerButton">
+                    <div class="CancelButton" id="CancelButton">
+                        Continuar navegando?
+                    </div>
+                    <a class="SairButton" href="/Logout">
+                        Sim
+                    </a>
+                </div>
+            </div> 
+        </div>   
     </header>
     <main class="Principal">
-        <div class="Slogan">“Sincronize seu tempo, a todo tempo.”</div>
+        <div class="Slogan">“Sincronize seu tempo, a todo tempo.”</div>  
             <div class="Centro">
                 <div class="Cal">
                     <div class="CalDiv">
@@ -155,7 +171,8 @@
                         </div>                            
                     </div>
                 </div>
-            </div>    
+            </div>
+                
     </main>
 
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -205,6 +222,23 @@
                         input.setAttribute('placeholder', 'PESQUISAR GRUPOS');
                     }
                 });
+            </script>
+            <script>
+                            document.getElementById("LogOut").addEventListener("click", function() {
+                                document.getElementById("SairTamanhoEST").classList.toggle("show");
+                            });
+
+                            document.getElementById("LogOut").addEventListener("click", function() {
+                                document.getElementById("SairBack").classList.toggle("show");
+                            });
+
+                            document.getElementById("CancelButton").addEventListener("click", function() {
+                                document.getElementById("SairTamanhoEST").classList.toggle("show");
+                            });
+            
+                            document.getElementById("CancelButton").addEventListener("click", function() {
+                                document.getElementById("SairBack").classList.toggle("show");
+                            });
             </script>
 </body>
 </html>
