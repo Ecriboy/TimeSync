@@ -1,11 +1,14 @@
 /* Pagina Geral */
 
+.macacada {
+    margin-bottom: 16vh;
+}
 
 .Principal {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
-    grid-template-areas: "a a b c";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 1fr;
+    height: 0;
 }
 
 body {
@@ -157,6 +160,7 @@ body {
     transition: opacity 0.5s;
     justify-content: center;
     overflow-x: hidden;
+    bottom: 0;
 }
 
 .SairTamanhoEST.show {
@@ -165,7 +169,7 @@ body {
     width: 100vw;
     height: 100vh;
     opacity: 1;
-    position: absolute;
+    position: fixed;
     display: flex;
 }
 
@@ -187,8 +191,9 @@ body {
     opacity: 1;
     mix-blend-mode: multiply;
     background-color: #0B132B;
-    position: absolute;
+    position: fixed;
     display: flex;
+    bottom: 0 !important;
 }
 
 .Sair { 
@@ -361,6 +366,7 @@ body {
     align-self: center;
     text-align: center;
     color: #FFFFFF;
+    margin-bottom: 4%;
 
 }
 
@@ -370,14 +376,33 @@ body {
 */
 
 .Centro {
-    max-width: 1380px;
-    max-height: 602px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
     width: 100%;
-    height: 100%;
-    display: flex;
+    height: 0;
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (max-aspect-ratio: 1200/1000 ) {
+    .Centro {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+        width: 100%;
+        height: 0;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
 }
 
 /* 
@@ -390,7 +415,6 @@ body {
 */
 
 .Cal {
-    margin-right: 15%;
     display: flex;
     align-items: center;
     height: 100vh;
@@ -412,13 +436,14 @@ body {
     border-bottom: 1px solid #FFFFFF;
     padding-bottom: 10px;
     user-select: none;
+    margin-top: 0;
+    margin-bottom: 4%;
+    align-self: end;
 }
 
 .CalDiv {
     width: 100%;
     height: 100%;
-    max-width: 608px;
-    max-height: 520px;
 }
 
 .tabela {
@@ -512,7 +537,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 11%;
 }
 
 
@@ -558,10 +582,11 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
+    align-self: end;
+    margin-bottom: 4%;
 }
 
 .GruposEST {
-    margin-top: 5%;
     max-width: 520px;
     max-height: 520px;
     width: 100%;
