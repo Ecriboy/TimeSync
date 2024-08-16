@@ -10,11 +10,13 @@
 <body class="corpagina">
     <header>
         <div class="NavBar">
-            <h1 class="linhasCON">
-                <svg class="linhasEST" id="linhasDiv">
-                    <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
-                </svg>
-            </h1>
+            <div class="NavContainer">
+                <h1 class="linhasCON">
+                    <svg class="linhasEST" id="linhasDiv">
+                        <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
+                    </svg>
+                </h1>
+            </div>
             <h2 class="estlogo">
                 <img class="logo" src="{{ url_for('static', filename='TimeSync.png')}}" >
             </h2>
@@ -22,11 +24,13 @@
                 <img class="User" src="{{ url_for('static', filename='User.png')}}" >
             </h3>
             <div class="sidebar" id="sidebar">
-                <h1>
-                    <svg class="linhasEST2" id="LinhasDiv2">
-                        <path class="linhas2" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
-                    </svg>
-                </h1>
+                <div class="SideContainer">
+                    <h1 class="LinhasCON2">
+                            <svg class="linhasEST2" id="LinhasDiv2">
+                                <path class="linhas2" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
+                            </svg>    
+                    </h1>
+                </div>
                 <h2 class="ItensEST">
                     <a href="/Home">
                         <img class="Item" id="Item1" src="{{ url_for('static', filename='Home.png')}}" >

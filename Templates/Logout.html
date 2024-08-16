@@ -10,11 +10,13 @@
 <body class="corpagina">
     <header>
         <div class="NavBar">
-            <h1 class="linhasCON">
-                <svg class="linhasEST" id="linhasDiv">
-                    <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
-                </svg>
-            </h1>
+            <div class="NavContainer">
+                <h1 class="linhasCON">
+                    <svg class="linhasEST" id="linhasDiv">
+                        <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
+                    </svg>
+                </h1>
+            </div>
             <h2 class="estlogo">
                 <img class="logo" src="{{ url_for('static', filename='TimeSync.png')}}" >
             </h2>
@@ -22,11 +24,13 @@
                 <img class="User" src="{{ url_for('static', filename='User.png')}}" >
             </h3>
             <div class="sidebar" id="sidebar">
-                <h1>
-                    <svg class="linhasEST2" id="LinhasDiv2">
-                        <path class="linhas2" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
-                    </svg>
-                </h1>
+                <div class="SideContainer">
+                    <h1 class="LinhasCON2">
+                            <svg class="linhasEST2" id="LinhasDiv2">
+                                <path class="linhas2" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
+                            </svg>    
+                    </h1>
+                </div>
                 <h2 class="ItensEST">
                     <a href="/Home">
                         <img class="Item" id="Item1" src="{{ url_for('static', filename='Home.png')}}" >
@@ -79,20 +83,19 @@
 
     <script>
         function MudarMes(direction) {
-            const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
-            const Meses = [
+        const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
+        const Meses = [
                 "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
                 "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
             ];
-            const currentIndex = Meses.indexOf(MesAtual);
+        const currentIndex = Meses.indexOf(MesAtual);
 
-            let newIndex;
-            if (direction === 'prev') {
+        let newIndex;
+        if (direction === 'prev') {
                 newIndex = currentIndex === 0 ? 11 : currentIndex - 1;
-            } else {
+        } else {
                 newIndex = currentIndex === 11 ? 0 : currentIndex + 1;
-            }
-
+        }
             const NovoMes = Meses[newIndex];
             window.location.href = `/Home?mes=${NovoMes}`; // Redireciona para a página com o novo mês
         }
