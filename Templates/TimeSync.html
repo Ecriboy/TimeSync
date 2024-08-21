@@ -79,7 +79,7 @@
                                             <style>
                                                 .TitMes{font-family: 'Nunito'}             
                                             </style>                          
-                                            <span class="TitMes">{{ title }} 2024</span>
+                                            <span class="TitMes">{{ title }} - {{ ano }}</span>
                                         <svg class="Butfoward" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" button onclick="MudarMes('next')">                                       
                                             <path d="M1.78711 15.5L9 8L1.78711 0.5L0 2.35825L5.42578 8L0 13.6418L1.78711 15.5Z" fill="#6FFFE9">
                                         </svg>
@@ -109,10 +109,10 @@
                                         .dias{font-family: 'Nunito'}             
                                     </style>{{ dia['dia'] }}</span>
                                     </td>
-                                    {% if loop.index % 7 == 0 %}
-                                        </tr><tr>
-                                    {% endif %}
-                                {% endfor %}
+                                {% if loop.index % 7 == 0 %}
+                                    </tr><tr>
+                                {% endif %}
+                            {% endfor %}
                                 
                             </tbody>   
                         </table>
@@ -135,22 +135,9 @@
                                 <p class="MemTit">Membros</p>
                             </div>
                             <div class="GCont">
-                                <div class="IconEST">
                                     <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
-                                    <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
-                                    <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
-                                </div>
-                                <div class="IconT">
                                     <p class="IT">PLACEHOLDER</p>
-                                    <p class="IT">PLACEHOLDER</p>
-                                    <p class="IT">PLACEHOLDER</p>
-                                </div>
-                                <div class="MembrosEST"> 
-                                        <p class="Num">100</p>
-                                        <p class="Num">100</p>
-                                        <p class="Num">100</p>
-                                    </div>
-                                </div>
+                                    <p class="Num">100</p>
                             </div>
                         <div class="Recomendado">
                             <p class="Alta2">Recomendados para você</p>
@@ -194,6 +181,7 @@
             <script>
                 function MudarMes(direction) {
                     const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
+                    const AnoAtual = parseInt("{{ ano }}"); // Obtém o ano atual do Flask e converte para inteiro
                     const Meses = [
                         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
                         "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
@@ -201,14 +189,22 @@
                     const currentIndex = Meses.indexOf(MesAtual);
 
                     let newIndex;
+                    let novoAno = AnoAtual;
+                    
                     if (direction === 'prev') {
                         newIndex = currentIndex === 0 ? 11 : currentIndex - 1;
+                        if (currentIndex === 0) {
+                            novoAno--; // Decrementa o ano se for janeiro e estamos indo para o mês anterior
+                        }
                     } else {
                         newIndex = currentIndex === 11 ? 0 : currentIndex + 1;
+                        if (currentIndex === 11) {
+                            novoAno++; // Incrementa o ano se for dezembro e estamos indo para o próximo mês
+                        }
                     }
 
                     const NovoMes = Meses[newIndex];
-                    window.location.href = `/Home?mes=${NovoMes}`; // Redireciona para a página com o novo mês
+                    window.location.href = `/Home?mes=${NovoMes}&ano=${novoAno}`; // Redireciona para a página com o novo mês e ano
                 }
             </script>
             <script>

@@ -480,6 +480,10 @@ body {
     text-align: center;
 }
 
+.prev-month{
+    text-align: center;
+}
+
 .dias {
     font-size: 22px;
     font-weight: bold;
@@ -597,6 +601,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 .AltaEST{
@@ -640,15 +645,15 @@ body {
 .GCont {
     width: 100%;
     max-width: 439px;
-    max-height: 205px;
+    max-height: 55px;
     height: 100vh;
     display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 10px; /* Espaçamento entre as colunas */
-    align-items: center; /* Alinha os itens verticalmente ao centro */
-    display: flex;
+    grid-template-columns: 0.5fr 1fr 0.65fr;
+    align-items: center;
     justify-content: space-between;
     user-select: none;
+    cursor: pointer;
+    margin-bottom: 5%;
 }
 
 .IconEST{
@@ -666,7 +671,6 @@ body {
     width: 100%;
     max-height: 55px;
     height: 100vh;
-    margin-top: 20%;
     margin-right: 0;
     display: flex;
     flex-direction: column;
@@ -704,11 +708,20 @@ body {
 }
 
 .IT {
-    height: auto; /* Adicionado */
+    height: auto;
     max-width: 200px;
     width: 100%;
     padding: 0;
     vertical-align: middle;
+    max-width: 125px;
+    width: 100%;
+    max-height: 21px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 22px;
+    color: #FFFFFF;
 }
 
 .MembrosEST {
@@ -763,13 +776,11 @@ body {
     font-weight: 700;
     font-size: 14px;
     line-height: 22px;
-    margin-top: 18%;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    align-self: flex-end; /* Alinha os membros na parte inferior */
 }
 
 .GCont2 {
