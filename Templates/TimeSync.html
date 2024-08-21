@@ -70,60 +70,45 @@
         <div class="Slogan">“Sincronize seu tempo, a todo tempo.”</div>
             <div class="Centro">
                 <p class="TitCal">MEU CALENDARIO</p>           
-                <div class="Cal">
-                    <div class="CalDiv">
-                        <table class="tabela">
-                            <tbody>
-                                <tr>
-                                    <td colspan="7" class="ColTit">
-                                        <svg class="Butback" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" button onclick="MudarMes('prev')">
-                                            <path d="M7.21289 0.5L0 8L7.21289 15.5L9 13.6418L3.57422 8L9 2.35824L7.21289 0.5Z" fill="#6FFFE9">
-                                        </svg>
-                                            <style>
-                                                .TitMes{font-family: 'Nunito'}             
-                                            </style>                          
-                                            <span class="TitMes">{{ title }} - {{ ano }}</span>
-                                        <svg class="Butfoward" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" button onclick="MudarMes('next')">                                       
-                                            <path d="M1.78711 15.5L9 8L1.78711 0.5L0 2.35825L5.42578 8L0 13.6418L1.78711 15.5Z" fill="#6FFFE9">
-                                        </svg>
-                                        <svg class="Linha" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 1.5H554" stroke="#E0E0E0" stroke-width="1.5"/>
-                                        </svg>    
-                                    </td>
-                                </tr>                   
-                            </tbody>
-                            <tbody class="corpo">
-                                <tr class="dia">
+                        <div class="tabela">
+                            <div class="tabela-est">
+                                <svg class="Butback" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" button onclick="MudarMes('prev')">
+                                    <path d="M7.21289 0.5L0 8L7.21289 15.5L9 13.6418L3.57422 8L9 2.35824L7.21289 0.5Z" fill="#6FFFE9">
+                                </svg>
                                     <style>
-                                        .dia{font-family: 'Nunito'}             
-                                    </style>
-                                    <td>DOM</td>
-                                    <td>SEG</td>
-                                    <td>TER</td>
-                                    <td>QUA</td>
-                                    <td>QUI</td>
-                                    <td>SEX</td>
-                                    <td>SAB</td>
-                                </tr>
+                                        .TitMes{font-family: 'Nunito'}             
+                                    </style>                          
+                                    <span class="TitMes">{{ title }} - {{ ano }}</span>
+                                <svg class="Butfoward" width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" button onclick="MudarMes('next')">                                       
+                                    <path d="M1.78711 15.5L9 8L1.78711 0.5L0 2.35825L5.42578 8L0 13.6418L1.78711 15.5Z" fill="#6FFFE9">
+                                </svg>
+                                <svg class="Linha" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 1.5H554" stroke="#E0E0E0" stroke-width="1.5"/>
+                                </svg>    
+                            </div>
+                            <div class="corpo">
+                                <p>DOM</p>
+                                <p>SEG</p>
+                                <p>TER</p>
+                                <p>QUA</p>
+                                <p>QUI</p>
+                                <p>SEX</p>
+                                <p>SAB</p>
                                 {% for dia in dias %}
-                                    <td id="{{ dia['id'] }}" {% if dia['class'] %}class="{{ dia['class'] }}" {% endif %}
+                                    <div id="{{ dia['id'] }}" {% if dia['class'] %}class="{{ dia['class'] }}" {% endif %}
                                     {% if dia['feriado'] %}name="{{ dia['feriado'] }}"{% endif %}>
-                                    <span class="dias" id="diasEST">
-                                        <style>
-                                        .dias{font-family: 'Nunito'}             
-                                        </style>
-                                    {{ dia['dia'] }}
-                                    </span>
-                                    </td>
-                                {% if loop.index % 7 == 0 %}
-                                    </tr><tr>
-                                {% endif %}
-                            {% endfor %}
+                                        <span class="dias" id="diasEST">
+                                            <style>
+                                            .dias{font-family: 'Nunito'}             
+                                            </style>
+                                            {{ dia['dia'] }}
+                                        </span>
+                                    </div>
+                                {% endfor %}
                                 
-                            </tbody>   
-                        </table>
-                    </div>
-                </div>
+                            </div>
+                               
+                        </div>
                 <div class="Search">
                     <svg class="Lupa" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
                         <path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>

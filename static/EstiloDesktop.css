@@ -17,7 +17,26 @@ body {
 }
 
 .corpo {
+    width: 120%;
+    height: 75%;
     user-select: none;
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.corpo > p {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+    /* identical to box height, or 94% */
+    align-self: start;
+    text-align: center;
+    color: black;
 }
 
 .corpagina {
@@ -425,7 +444,6 @@ body {
     border-bottom: 1px solid #FFFFFF;
     padding-bottom: 10px;
     user-select: none;
-    margin-top: 0;
     margin-bottom: 4%;
     align-self: end;
 }
@@ -439,14 +457,30 @@ body {
     background-color: #5B718B;
     margin: 0 auto;
     padding: 0;
-    width: 100%;
+    width: 43.334%;
     height: 100%;
-    max-width: 608px;
-    max-height: 520px;
     border-radius: 10px;
-    padding-bottom: 50px;
+    /*padding-bottom: 50px;*/
     padding-left: 10%;
     padding-right: 10%;
+    align-self: self-start;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.tabela-est {
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 0.25fr 1fr 0.25fr;
+    grid-template-rows: repeat(2, 1fr);
+    width: 120%;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.Linha {
+    grid-column: span 3;
 }
 
 .ColTit {
@@ -483,19 +517,14 @@ body {
     cursor: pointer;
     background-color: #E0E0E0;
     border-radius: 50%;
-    padding-bottom: 50%;
-    width: 50%;
+    height: 30px;
+    width: 30px;
     display: inline-block;
-    height: 0;
-    /*box-shadow: #ffffff;*/
 }
-
-
 
 .Butfoward {
     float: right;
-    margin-right: -30px;
-    margin-top: 5px;
+    margin-right: -90%;
 }
 
 .Butfoward:hover {
@@ -504,8 +533,7 @@ body {
 
 .Butback {
     float: left;
-    margin-left: -30px;
-    margin-top: 5px;
+    margin-left: -90%;
 }
 
 .Butback:hover {
@@ -538,7 +566,7 @@ body {
     max-width: 520px;
     max-height: 602px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     align-self: center;
     display: flex;
     flex-direction: column;
