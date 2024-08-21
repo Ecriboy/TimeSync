@@ -15,8 +15,8 @@ def logout():
     """
     return render_template('Logout.html')
 
-
-@app.route('/Home')
+@app.route('/')
+@app.route('/Home') 
 def index():
     """
     Função para renderizar a página inicial.

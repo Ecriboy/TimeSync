@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TimeSync</title>
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
-    <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloDesktop.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloMobile.css')}}" rel="stylesheet">
+    <script src="static/script.js"></script>
+    <script src="static/script2.js"></script>
 </head>
 <body class="corpagina">
     <header>
@@ -105,9 +108,12 @@
                                 {% for dia in dias %}
                                     <td id="{{ dia['id'] }}" {% if dia['class'] %}class="{{ dia['class'] }}" {% endif %}
                                     {% if dia['feriado'] %}name="{{ dia['feriado'] }}"{% endif %}>
-                                    <span class="dias"><style>
+                                    <span class="dias" id="diasEST">
+                                        <style>
                                         .dias{font-family: 'Nunito'}             
-                                    </style>{{ dia['dia'] }}</span>
+                                        </style>
+                                    {{ dia['dia'] }}
+                                    </span>
                                     </td>
                                 {% if loop.index % 7 == 0 %}
                                     </tr><tr>
@@ -139,107 +145,101 @@
                                     <p class="IT">PLACEHOLDER</p>
                                     <p class="Num">100</p>
                             </div>
-                        <div class="Recomendado">
+                        </div>
+                        <div class="AltaEST">
                             <p class="Alta2">Recomendados para você</p>
                             <svg class="Alli" xmlns="http://www.w3.org/2000/svg">
                                 <line class="Aline" y1="0.5" x2="327" y2="0.5" stroke="#6FFFE9"/>
                             </svg>
-                            <div class="GCont2">
-                                <div class="IconEST2">
-                                    <img class="Icon2" src="{{ url_for('static', filename='Icon2.png')}}">
-                                    <img class="Icon2" src="{{ url_for('static', filename='Icon2.png')}}">
-                                </div>
-                                <div class="IconT2">
-                                    <p class="IT2">PLACEHOLDER</p>
-                                    <p class="IT2">PLACEHOLDER</p>
-                                </div>
-                                <div class="MembrosEST2"> 
-                                        <p class="Num2">100</p>
-                                        <p class="Num2">100</p>
-                                    </div>
-                                </div>
+                            <div class="MemNum">
+                                <p class="MemTit">Membros</p>
                             </div>
-                        </div>                                       
-                        </div>                            
+                            <div class="GCont">
+                                    <img class="Icon" src="{{ url_for('static', filename='Icon2.png')}}">
+                                    <p class="IT">MEU PAU</p>
+                                    <p class="Num">100</p>
+                            </div>
+                        </div>                                                                   
                     </div>
                 </div>
             </div>
                 
     </main>
 
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script>
-                document.getElementById("linhasDiv").addEventListener("click", function() {
-                    document.getElementById("sidebar").classList.toggle("show");
-                });
-
-                document.getElementById("LinhasDiv2").addEventListener("click", function() {
-                    document.getElementById("sidebar").classList.toggle("show");
-                });
-            </script>
-            <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-            <script>
-                function MudarMes(direction) {
-                    const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
-                    const AnoAtual = parseInt("{{ ano }}"); // Obtém o ano atual do Flask e converte para inteiro
-                    const Meses = [
-                        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-                        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-                    ];
-                    const currentIndex = Meses.indexOf(MesAtual);
-
-                    let newIndex;
-                    let novoAno = AnoAtual;
-                    
-                    if (direction === 'prev') {
-                        newIndex = currentIndex === 0 ? 11 : currentIndex - 1;
-                        if (currentIndex === 0) {
-                            novoAno--; // Decrementa o ano se for janeiro e estamos indo para o mês anterior
-                        }
-                    } else {
-                        newIndex = currentIndex === 11 ? 0 : currentIndex + 1;
-                        if (currentIndex === 11) {
-                            novoAno++; // Incrementa o ano se for dezembro e estamos indo para o próximo mês
-                        }
-                    }
-
-                    const NovoMes = Meses[newIndex];
-                    window.location.href = `/Home?mes=${NovoMes}&ano=${novoAno}`; // Redireciona para a página com o novo mês e ano
-                }
-            </script>
-            <script>
-                const input = document.getElementById('GrupoTit');
-        
-                // Adicione um evento de foco ao input
-                input.addEventListener('focus', function() {
-                    // Quando o input recebe foco, remova o placeholder
-                    input.removeAttribute('placeholder');
-                });
-        
-                // Adicione um evento de desfoque ao input
-                input.addEventListener('blur', function() {
-                    // Quando o input perde foco e não tem valor, adicione o placeholder de volta
-                    if (!input.value.trim()) {
-                        input.setAttribute('placeholder', 'PESQUISAR GRUPOS');
-                    }
-                });
-            </script>
-            <script>
-                            document.getElementById("LogOut").addEventListener("click", function() {
-                                document.getElementById("SairTamanhoEST").classList.toggle("show");
-                            });
-
-                            document.getElementById("LogOut").addEventListener("click", function() {
-                                document.getElementById("SairBack").classList.toggle("show");
-                            });
-
-                            document.getElementById("CancelButton").addEventListener("click", function() {
-                                document.getElementById("SairTamanhoEST").classList.toggle("show");
-                            });
-            
-                            document.getElementById("CancelButton").addEventListener("click", function() {
-                                document.getElementById("SairBack").classList.toggle("show");
-                            });
-            </script>
 </body>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    document.getElementById("linhasDiv").addEventListener("click", function() {
+        document.getElementById("sidebar").classList.toggle("show");
+    });
+
+    document.getElementById("LinhasDiv2").addEventListener("click", function() {
+        document.getElementById("sidebar").classList.toggle("show");
+    });
+</script>
+<script>
+    function MudarMes(direction) {
+        const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
+        const AnoAtual = parseInt("{{ ano }}"); // Obtém o ano atual do Flask e converte para inteiro
+        const Meses = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+        const currentIndex = Meses.indexOf(MesAtual);
+
+        let newIndex;
+        let novoAno = AnoAtual;
+        
+        if (direction === 'prev') {
+            newIndex = currentIndex === 0 ? 11 : currentIndex - 1;
+            if (currentIndex === 0) {
+                novoAno--; // Decrementa o ano se for janeiro e estamos indo para o mês anterior
+            }
+        } else {
+            newIndex = currentIndex === 11 ? 0 : currentIndex + 1;
+            if (currentIndex === 11) {
+                novoAno++; // Incrementa o ano se for dezembro e estamos indo para o próximo mês
+            }
+        }
+
+        const NovoMes = Meses[newIndex];
+        window.location.href = `/Home?mes=${NovoMes}&ano=${novoAno}`; // Redireciona para a página com o novo mês e ano
+    }
+</script>
+<script>
+    const input = document.getElementById('GrupoTit');
+
+    // Adicione um evento de foco ao input
+    input.addEventListener('focus', function() {
+        // Quando o input recebe foco, remova o placeholder
+        input.removeAttribute('placeholder');
+    });
+
+    // Adicione um evento de desfoque ao input
+    input.addEventListener('blur', function() {
+        // Quando o input perde foco e não tem valor, adicione o placeholder de volta
+        if (!input.value.trim()) {
+            input.setAttribute('placeholder', 'PESQUISAR GRUPOS');
+        }
+    });
+</script>
+<script>
+                document.getElementById("LogOut").addEventListener("click", function() {
+                    document.getElementById("SairTamanhoEST").classList.toggle("show");
+                });
+
+                document.getElementById("LogOut").addEventListener("click", function() {
+                    document.getElementById("SairBack").classList.toggle("show");
+                });
+
+                document.getElementById("CancelButton").addEventListener("click", function() {
+                    document.getElementById("SairTamanhoEST").classList.toggle("show");
+                });
+
+                document.getElementById("CancelButton").addEventListener("click", function() {
+                    document.getElementById("SairBack").classList.toggle("show");
+                });
+</script>
 </html>
