@@ -2,18 +2,30 @@
 Este é um módulo Flask simples para renderizar uma página inicial.
 """
 
-from flask import Flask, render_template, request
+from flask import *
 import calendar 
+import os
 
 app = Flask(__name__)
+app.secret_key = os.urandom(12) 
 
-
-@app.route('/Logout')
-def logout():
-    """
-    Pagina de logout e login tambem porra
-    """
+@app.route('/Logout', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        if email == 'email@admin.com' and password == '123':
+            session['logged_in'] = True
+            return redirect(url_for('index'))
+        else:
+            flash('E-mail ou senha incorretos. Tente novamente.')
+            return redirect(url_for('login'))
     return render_template('Logout.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('login'))
 
 @app.route('/')
 @app.route('/Home') 
@@ -21,6 +33,8 @@ def index():
     """
     Função para renderizar a página inicial.
     """
+    if not session.get('logged_in'):
+        return render_template('Logout.html')
     
     # Mapeamento de nomes de meses em português para números
     meses = {
@@ -123,6 +137,8 @@ def index():
     print(f"Month: {mes_num}, Year: {ano}")
     
     return render_template('TimeSync.html', title=title, dias=dias, ano=ano)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

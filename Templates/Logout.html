@@ -5,134 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TimeSync</title>
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
-    <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloDesktop.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloMobile.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloLogin.css')}}" rel="stylesheet">
+    <script src="static/script.js"></script>
+    <script src="static/script2.js"></script>
 </head>
-<body class="corpagina">
-    <header>
-        <div class="NavBar">
-            <div class="NavContainer">
-                <h1 class="linhasCON">
-                    <svg class="linhasEST" id="linhasDiv">
-                        <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
-                    </svg>
-                </h1>
-            </div>
-            <h2 class="estlogo">
-                <img class="logo" src="{{ url_for('static', filename='TimeSync.png')}}" >
-            </h2>
-            <h3 class="UserEST">
-                <img class="User" src="{{ url_for('static', filename='User.png')}}" >
-            </h3>
-            <div class="sidebar" id="sidebar">
-                <div class="SideContainer">
-                    <h1 class="LinhasCON2">
-                            <svg class="linhasEST2" id="LinhasDiv2">
-                                <path class="linhas2" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
-                            </svg>    
-                    </h1>
-                </div>
-                <h2 class="ItensEST">
-                    <a href="/Home">
-                        <img class="Item" id="Item1" src="{{ url_for('static', filename='Home.png')}}" >
-                    </a>
-                    <img class="Item" id="Item2" src="{{ url_for('static', filename='About.png')}}" >
-                    <img class="Item" id="Item3" src="{{ url_for('static', filename='Project.png')}}" >
-                </h2>
-                <h3 class="ExitEST">
-                        <img class="Exit" id="LogOut" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" >
-                </h3>   
-            </div>
-        </div>
-        <div class="SairBack" id="SairBack">
-
-        </div>
-        <div class="SairTamanhoEST" id="SairTamanhoEST">
-            <div class="Sair">
-                <div class="SairT">
-                        Deseja realizar logout?
-                </div>
-                <div class="ContainerButton">
-                    <div class="CancelButton" id="CancelButton">
-                        Continuar navegando?
-                    </div>
-                    <a class="SairButton" href="/Logout">
-                        Sim
-                    </a>
-                </div>
-            </div> 
-        </div>   
-    </header>
+<body class="login-pagina">
+    <div class="logo-estilo">
+        <img class="logo-login" src="{{ url_for('static', filename='TimeSync.png') }}">
+    </div>
+    
+    <form class="login" action="{{ url_for('login') }}" method="POST">
+            <input class="login-input" type="email" name="email" placeholder="E-mail" required>
+            <input class="login-input" type="password" name="password" placeholder="Senha" required>
+            <p class="texto">Não tem uma conta? <a class="cadastro-hyperlink" href="/Home">Cadastre-se!</a></p>
+            <button class="button-login" type="submit">
+                <p class="texto" id="button-text">Login</p>
+            </button>
+    </form>
+    
+</body>
+</html>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 
-    </script>
-
-    <script>
-        document.getElementById("linhasDiv").addEventListener("click", function() {
-            document.getElementById("sidebar").classList.toggle("show");
-        });
-
-        document.getElementById("LinhasDiv2").addEventListener("click", function() {
-            document.getElementById("sidebar").classList.toggle("show");
-        });
-    </script>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}">
-
-    </script>
-
-    <script>
-        function MudarMes(direction) {
-        const MesAtual = "{{ title }}"; // Obtém o mês atual do Flask
-        const Meses = [
-                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-            ];
-        const currentIndex = Meses.indexOf(MesAtual);
-
-        let newIndex;
-        if (direction === 'prev') {
-                newIndex = currentIndex === 0 ? 11 : currentIndex - 1;
-        } else {
-                newIndex = currentIndex === 11 ? 0 : currentIndex + 1;
-        }
-            const NovoMes = Meses[newIndex];
-            window.location.href = `/Home?mes=${NovoMes}`; // Redireciona para a página com o novo mês
-        }
-    </script>
-
-    <script>
-        const input = document.getElementById('GrupoTit');
-
-        // Adicione um evento de foco ao input
-        input.addEventListener('focus', function() {
-            // Quando o input recebe foco, remova o placeholder
-            input.removeAttribute('placeholder');
-        });
-
-        // Adicione um evento de desfoque ao input
-        input.addEventListener('blur', function() {
-            // Quando o input perde foco e não tem valor, adicione o placeholder de volta
-            if (!input.value.trim()) {
-                input.setAttribute('placeholder', 'PESQUISAR GRUPOS');
-            }
-        });
-    </script>
-
-    <script>
-                    document.getElementById("LogOut").addEventListener("click", function() {
-                        document.getElementById("SairTamanhoEST").classList.toggle("show");
-                    });
-
-                    document.getElementById("LogOut").addEventListener("click", function() {
-                        document.getElementById("SairBack").classList.toggle("show");
-                    });
-
-                    document.getElementById("CancelButton").addEventListener("click", function() {
-                        document.getElementById("SairTamanhoEST").classList.toggle("show");
-                    });
-    
-                    document.getElementById("CancelButton").addEventListener("click", function() {
-                        document.getElementById("SairBack").classList.toggle("show");
-                    });
     </script>

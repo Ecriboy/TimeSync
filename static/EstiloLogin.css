@@ -1,0 +1,67 @@
+.login-pagina {
+    background-color: #3a506b;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.logo-estilo { 
+    width: 50%;
+    height: auto;
+}
+
+.logo-login {
+    width: 100%;
+    height: 100%;
+}
+
+.login {
+    width: 18.2%;
+    height: 21vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.login-input {
+box-sizing: border-box;
+background: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 35px;
+height: 75%;
+width: 100%;
+padding-left: 10%;
+}
+
+.texto{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.cadastro-hyperlink {
+    color: #6FFFE9;
+    margin: 0;
+}
+
+.button-login {
+width: 50%;
+height: 50%;
+background: #5BC0BE;
+border-radius: 35px;
+display: grid;
+align-items: center;
+justify-items: center;
+user-select: none;
+cursor: pointer;
+}
