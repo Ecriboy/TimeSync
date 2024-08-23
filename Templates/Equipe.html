@@ -8,6 +8,9 @@
     <link href="{{ url_for('static', filename='EstiloDesktop.css')}}" rel="stylesheet">
     <link href="{{ url_for('static', filename='EstiloMobile.css')}}" rel="stylesheet">
     <link href="{{ url_for('static', filename='EstiloEquipe.css')}}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
     <script src="static/script.js"></script>
     <script src="static/script2.js"></script>
 </head>
@@ -75,53 +78,61 @@
         <div class="centro-equipe">
             <p class="slogan-equipe">Quais as mentes por trás deste projeto</p>
             <div class="imagens-grid">
-                <img src="{{ url_for('static', filename='Eduardo.png')}}">
+                <img class="equipe-imagem" src="{{ url_for('static', filename='Eduardo.png')}}">
                 <div class="detalhes-grid">
-                    <p class="texto">
+                    <p class="texto-equipe" id="equipe1">
                         Eduardo Ricci da Silva
                     </p>
-                    <p class="texto">
-                        Analista e Programador
-                    </p>
-                    <p class="texto">
-                        18
-                    </p>
+                    <div class="detalhes-grid2">
+                        <p class="texto-equipe" id="equipe2">
+                            Analista e Programador
+                        </p>
+                        <p class="texto-equipe" id="equipe2">
+                            18
+                        </p>
+                    </div>    
                 </div>
-                <img src="{{ url_for('static', filename='Eric.png')}}">
+                <img class="equipe-imagem" src="{{ url_for('static', filename='Eric.png')}}">
                 <div class="detalhes-grid">
-                    <p class="texto">
+                    <p class="texto-equipe" id="equipe1">
                         Eric da Silva Vieira
                     </p>
-                    <p class="texto">
-                        Programador
-                    </p>
-                    <p class="texto">
-                        18
-                    </p>
+                    <div class="detalhes-grid2">
+                        <p class="texto-equipe" id="equipe2">
+                            Programador
+                        </p>
+                        <p class="texto-equipe" id="equipe2">
+                            18
+                        </p>
+                    </div>
                 </div>
-                <img src="{{ url_for('static', filename='Paula.png')}}">
+                <img class="equipe-imagem" src="{{ url_for('static', filename='Paula.png')}}">
                 <div class="detalhes-grid">
-                    <p class="texto">
+                    <p class="texto-equipe" id="equipe1">
                         Paula Melissa Ribeiro Moura
                     </p>
-                    <p class="texto">
-                        Analista de Banco de Dados e Designer
-                    </p>
-                    <p class="texto">
-                        17
-                    </p>
+                    <div class="detalhes-grid2">
+                        <p class="texto-equipe" id="equipe2">
+                            Analista de Banco de Dados e Designer
+                        </p>
+                        <p class="texto-equipe" id="equipe2">
+                            17
+                        </p>
+                    </div>
                 </div>
-                <img src="{{ url_for('static', filename='Samilly.png')}}">
+                <img class="equipe-imagem" src="{{ url_for('static', filename='Samilly.png')}}">
                 <div class="detalhes-grid">
-                    <p class="texto">
+                    <p class="texto-equipe" id="equipe1">
                         Samilly Vitória Siqueira Ribeiro
                     </p>
-                    <p class="texto">
-                        Analista e Designer
-                    </p>
-                    <p class="texto">
-                        18
-                    </p>
+                    <div class="detalhes-grid2">
+                        <p class="texto-equipe" id="equipe2">
+                            Analista e Designer
+                        </p>
+                        <p class="texto-equipe" id="equipe2">
+                            18
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

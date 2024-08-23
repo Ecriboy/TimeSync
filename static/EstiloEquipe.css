@@ -1,22 +1,29 @@
 .imagens-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 0.5fr 1fr;
     grid-template-rows: 1fr;
     align-items: center;
     justify-items: center;
     
 }
 
+
+.imagens-grid > div:nth-child(2),
+.imagens-grid > div:nth-child(4),
+.imagens-grid > div:nth-child(6),
+.imagens-grid > div:nth-child(8){
+  justify-self: start;
+}
+
+
 .slogan-equipe {
-
-font-family: 'Overlock SC';
-font-style: normal;
-font-weight: 400;
-font-size: 45px;
-line-height: 26px;
-text-align: center;
-color: #FFFFFF;
-
+    font-family: "Overlock SC";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 45px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .centro-equipe {
@@ -25,3 +32,52 @@ color: #FFFFFF;
     height: 100%;
     align-items: center;
 }
+
+.equipe-imagem {
+    height: 50%;
+}
+
+.detalhes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.detalhes-grid2 {
+    display: grid;
+    grid-template-columns: 12fr 1fr;
+    grid-template-rows: 1fr;
+    justify-self: start;
+    width: 100%;
+}
+
+.detalhes-grid2 > p:nth-child(2){
+    justify-self: end;
+}
+
+#equipe1 {
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 700;
+font-size: 35px;
+line-height: 22px;
+color: #FFFFFF;
+}
+
+#equipe2 {
+font-family: 'Overlock SC';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 22px;
+color: #FFFFFF;
+}
+
+.texto-equipe {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin: 0;
+}
+

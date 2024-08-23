@@ -1,5 +1,5 @@
 @media screen and (max-aspect-ratio: 1200/1000 ) {
-    .Centro {
+    .Centro  {
         display: grid;
         justify-items: center;
         align-items: center;
@@ -14,4 +14,22 @@
     .corpo {
         padding-bottom: 11%;
     }
+    .imagens-grid {
+        display: grid !important;
+        justify-items: center !important;
+        align-items: center !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr !important;
+        width: 100% !important;
+        height: 0;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .detalhes-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        justify-self: center !important;
+    }
+
 }
