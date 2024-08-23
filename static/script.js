@@ -37,7 +37,7 @@ function search(query, defaultGroups) {
             return 1;
         }
     });
-    groupList.innerHTML = '<div class="AltaEST"><div class="MemNum"><p class="MemTit">Membros</p></div></div>';
+    groupList.innerHTML = '<div class="AltaEST" style="width: 100%"><div class="MemNum"><div></div><div></div><p class="MemTit">Membros</p></div></div>';
     groups.forEach(group => {
         groupList.appendChild(group);
     })

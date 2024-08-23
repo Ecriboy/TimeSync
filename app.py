@@ -1,7 +1,3 @@
-"""
-Este é um módulo Flask simples para renderizar uma página inicial.
-"""
-
 from flask import *
 import calendar 
 import os
@@ -26,6 +22,20 @@ def login():
 def logout():
     session.pop('logged_in', None)
     return redirect(url_for('login'))
+
+@app.route('/Equipe')
+def equipe():
+    if not session.get('logged_in'):
+        return render_template('Logout.html')
+    
+
+    return render_template('Equipe.html')
+
+@app.route('/Sobre')
+def sobre():
+    if not session.get('logged_in'):
+        return render_template('Logout.html')
+    return render_template('Sobre.html')    
 
 @app.route('/')
 @app.route('/Home') 

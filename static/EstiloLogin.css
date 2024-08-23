@@ -38,7 +38,7 @@ width: 100%;
 padding-left: 10%;
 }
 
-.texto{
+.texto, .flashes{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
@@ -65,3 +65,4 @@ justify-items: center;
 user-select: none;
 cursor: pointer;
 }
+

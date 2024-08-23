@@ -1,0 +1,27 @@
+.imagens-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+    
+}
+
+.slogan-equipe {
+
+font-family: 'Overlock SC';
+font-style: normal;
+font-weight: 400;
+font-size: 45px;
+line-height: 26px;
+text-align: center;
+color: #FFFFFF;
+
+}
+
+.centro-equipe {
+    display: grid;
+    width: 100vw;
+    height: 100%;
+    align-items: center;
+}

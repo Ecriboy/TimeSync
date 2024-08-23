@@ -547,6 +547,17 @@ body {
     user-select: none;
 }
 
+.texto{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
 .Linha {
     width: 100%; /* Define a largura da linha igual à largura da célula */
     height: 1px; /* Define a altura da linha */
@@ -636,9 +647,7 @@ body {
 }
 
 .AltaEST{
-    max-height: 243px;
-    max-width: 439px;
-    width: 100%;
+    width: 87%;
     align-self: center;
     display: flex;
     flex-direction: column;
@@ -674,24 +683,33 @@ body {
 
 .GCont {
     width: 100%;
-    max-width: 439px;
     max-height: 55px;
     height: 100vh;
     display: grid;
     grid-template-columns: 0.5fr 1fr 0.65fr;
     align-items: center;
     justify-content: space-between;
+    justify-items: center;
     user-select: none;
     cursor: pointer;
-    margin-top: 3%
+    margin-bottom: 3%;
 }
 
 .MemNum {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.65fr;
     align-items: center;
+    user-select: none;
+    width: 100%;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-align: center;
     justify-content: center;
-    height: 100%;
+    margin-top: 3%;
 }
 
 .IT, .Num {
@@ -715,30 +733,8 @@ body {
     color: #FFFFFF;
 }
 
-
-
-.MemTit{
-    max-height: 25px;
-    height: 100vh;
-    width: 100%;
-    margin-top: 30%;
-}
-
-.MemNum {
-    max-width: 125px;
-    width: 100%;
-    height: auto;
-    max-height: 21px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 22px;
-    color: #FFFFFF;
-    text-align: center;
-    justify-content: center;
-    align-self: flex-end; /* Alinha os membros na parte inferior */
-    margin-right: 1%;
+.MemTit {
+    margin: 0;
 }
 
 .Num {
