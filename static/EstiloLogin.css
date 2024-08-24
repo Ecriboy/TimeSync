@@ -9,7 +9,9 @@
     justify-items: center;
 }
 
-.logo-estilo { 
+.logo-cadastro { 
+    width: 100%;
+    height: 100%;
     max-width: 728px;
     height: auto;
 }
@@ -17,6 +19,8 @@
 .logo-login {
     width: 100%;
     height: 100%;
+    max-width: 728px;
+    height: auto;
 }
 
 .login {
@@ -68,4 +72,28 @@
     user-select: none;
     cursor: pointer;
 }
+
+.cadastrar {
+    width: 18.2vmax;
+    height: 21vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.button-cadastro {
+    max-width: 100px;
+    width: 70%;
+    background: #5BC0BE;
+    border-radius: 35px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
 

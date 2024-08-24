@@ -121,4 +121,9 @@
         height: 60vh;
         margin-bottom: 5vh;
     }
+
+    .logo-cadastro { 
+        max-width: 728px;
+        height: auto;
+    }
 }

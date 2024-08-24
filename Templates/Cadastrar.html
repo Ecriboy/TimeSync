@@ -12,32 +12,32 @@
     <script src="static/script2.js"></script>
 </head>
 <body class="login-pagina">
-    <div class="logo-estilo">
+    <div class="logo-cadastro">
         <img class="logo-login" src="{{ url_for('static', filename='TimeSync.png') }}">
     </div>
     
-    <form class="login" action="{{ url_for('Cadastrar') }}" method="POST">
+    <form class="cadastrar" action="{{ url_for('Cadastrar') }}" method="POST">
             <input id="username" name="username" type="text" placeholder="Insira o nome de usuario" class="login-input"/>
             <input id="apelido" name="apelido" type="text" placeholder="Insira seu apelido" class="login-input"/>
             <input id="email" name="email" type="email" placeholder="Insira seu email" class="login-input"/>
             <input id="data" name="data" type="date" placeholder="Insira sua data de nascimento" class="login-input"/>
             <input id="password" name="password" type="password" placeholder="Insira a senha" class="login-input"/>
-            <input type="submit" class="btn" value="Sign Up">
             <p class="texto">Já tem uma conta? <a class="cadastro-hyperlink" href="/logout">Logar!</a></p>
-            <button class="button-login" type="submit">
-                <p class="texto" id="button-text">Login</p>
+            <button class="button-cadastro" type="submit">
+                <p class="texto" id="button-text">Cadastrar</p>
             </button>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block body %}{% endblock %}
     </form>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-    {% block body %}{% endblock %}
+
 </body>
 </html>
 

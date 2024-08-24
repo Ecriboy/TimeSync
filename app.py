@@ -1,4 +1,4 @@
-from flask import request, session, Flask, render_template, redirect, url_for
+from flask import request, session, flash, Flask, render_template, redirect, url_for
 import calendar 
 import os
 from flask_mysqldb import MySQL
@@ -75,20 +75,27 @@ def Cadastrar():
         account = cursor.fetchone()
         if account:
             msg = 'Essa conta ja existe'
+            flash(msg)
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
             msg = 'Email invalido'
+            flash(msg)
         elif not re.match(r'[A-Za-z0-9]+', username):
             msg = 'Nome de usuario deve conter apenas letras e numeros'
+            flash(msg)
         elif not re.match(r'[A-Za-z0-9]+', apelido):
             msg = 'Nome de usuario deve conter apenas letras e numeros'
+            flash(msg)
         elif not username or not password or not email or not data:
-            msg = 'Campo obrigatorio'
+            msg = 'Preencha todos os campos'
+            flash(msg)
         else:
             cursor.execute(f'INSERT INTO TB_Usuario VALUES (% s, % s, % s, % s, % s, 0x{password})', (username, apelido, email, data, None ))
             mysql.connection.commit()
             msg = 'Registrado com sucesso'
+            flash(msg)
     elif request.method == 'POST':
-        msg = 'Por favor preencha o campo.'
+        msg = 'Por favor preencha os campos.'
+        flash(msg)
     return render_template('Cadastrar.html', msg = msg)
 
 @app.route('/Equipe')
