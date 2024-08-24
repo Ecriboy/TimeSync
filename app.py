@@ -1,10 +1,10 @@
-from flask import *
+from flask import request, session, Flask, render_template, redirect, url_for
 import calendar 
 import os
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
-
+from hashlib import sha256
 
 
 
@@ -12,27 +12,88 @@ app = Flask(__name__)
 app.secret_key = os.urandom(12) 
 
 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'user'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_DB'] = 'mydb'
+
+mysql = MySQL(app)
+
+
+"""
+mydb = mysql.connector.connect(host="localhost", user="user", password="password")
+cursor = mydb.cursor()
+cursor.execute("use mydb")
+"""
+
+
 @app.route('/Logout', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        username = request.form['username']
+        password = sha256(request.form['password'].encode("utf-8")).hexdigest()
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute(f'SELECT * FROM TB_usuario WHERE nome_usuario = % s and senha = 0x{password}', (username, ))
+        account = cursor.fetchone()
+        if account:
+            session['loggedin'] = True
+            session['username'] = account['nome_usuario']
+            msg = 'Logado com sucesso'
+            return redirect("/Home", code=302)
+        else:
+            msg = 'E-mail ou senha incorretos. Tente novamente.'
+            return render_template('Logout.HTML')
+        """
         if email == 'email@admin.com' and password == '123':
             session['logged_in'] = True
             return redirect(url_for('index'))
         else:
             flash('E-mail ou senha incorretos. Tente novamente.')
             return redirect(url_for('login'))
-    return render_template('Logout.html')
+        """
+    else:
+        return render_template('Logout.HTML')
 
 @app.route('/logout')
 def logout():
-    session.pop('logged_in', None)
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('email', None)
     return redirect(url_for('login'))
+
+@app.route('/Cadastrar', methods =['GET', 'POST'])
+def Cadastrar():
+    msg = ''
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form :
+        username = request.form['username']
+        apelido = request.form['apelido']
+        password = sha256(request.form['password'].encode("utf-8")).hexdigest()
+        email = request.form['email']
+        data = request.form['data']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM TB_usuario WHERE nome_usuario = % s', (username, ))
+        account = cursor.fetchone()
+        if account:
+            msg = 'Essa conta ja existe'
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            msg = 'Email invalido'
+        elif not re.match(r'[A-Za-z0-9]+', username):
+            msg = 'Nome de usuario deve conter apenas letras e numeros'
+        elif not re.match(r'[A-Za-z0-9]+', apelido):
+            msg = 'Nome de usuario deve conter apenas letras e numeros'
+        elif not username or not password or not email or not data:
+            msg = 'Campo obrigatorio'
+        else:
+            cursor.execute(f'INSERT INTO TB_Usuario VALUES (% s, % s, % s, % s, % s, 0x{password})', (username, apelido, email, data, None ))
+            mysql.connection.commit()
+            msg = 'Registrado com sucesso'
+    elif request.method == 'POST':
+        msg = 'Por favor preencha o campo.'
+    return render_template('Cadastrar.html', msg = msg)
 
 @app.route('/Equipe')
 def equipe():
-    if not session.get('logged_in'):
+    if not session.get('loggedin'):
         return render_template('Logout.html')
     
 
@@ -40,7 +101,7 @@ def equipe():
 
 @app.route('/Sobre')
 def sobre():
-    if not session.get('logged_in'):
+    if not session.get('loggedin'):
         return render_template('Logout.html')
     return render_template('Sobre.html')    
 
@@ -50,7 +111,7 @@ def index():
     """
     Função para renderizar a página inicial.
     """
-    if not session.get('logged_in'):
+    if not session.get('loggedin'):
         return render_template('Logout.html')
     
     # Mapeamento de nomes de meses em português para números
