@@ -7,6 +7,8 @@
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link href="{{ url_for('static', filename='EstiloDesktop.css')}}" rel="stylesheet">
     <link href="{{ url_for('static', filename='EstiloMobile.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloSobre.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloEquipe.css')}}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
@@ -16,19 +18,13 @@
 <body class="corpagina">
     <header>
         <div class="NavBar">
-            <div class="NavContainer">
-                <h1 class="linhasCON">
-                    <svg class="linhasEST" id="linhasDiv">
-                        <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
-                    </svg>
-                </h1>
-            </div>
-            <h2 class="estlogo">
-                <img class="logo" src="{{ url_for('static', filename='TimeSync.png')}}" >
-            </h2>
-            <h3 class="UserEST">
-                <img class="User" src="{{ url_for('static', filename='User.png')}}" >
-            </h3>
+            <h1 class="linhasCON">
+                <svg class="linhasEST" id="linhasDiv">
+                    <path class="linhas" d="M 2 6 H 3 V 5 h 26 v 1 Z m 1 5 H 3 v 1 h 26 v -1 Z m 1 6 H 3 v 1 h 26 v -1 Z"></path>
+                </svg>
+            </h1>
+            <img class="logo" src="{{ url_for('static', filename='TimeSync.png')}}" >
+            <img class="User" src="{{ url_for('static', filename='User.png')}}" >
             <div class="sidebar" id="sidebar">
                 <div class="SideContainer">
                     <h1 class="LinhasCON2">
@@ -37,20 +33,24 @@
                             </svg>    
                     </h1>
                 </div>
-                <h2 class="ItensEST">
+                <div class="ItensEST">
                     <a href="/Home">
                         <img class="Item" id="Item1" src="{{ url_for('static', filename='Home.png')}}" >
                     </a>
+                    <a href="/Home" class="texto-itens">Home</a>
                     <a href="/Equipe">
                         <img class="Item" id="Item2" src="{{ url_for('static', filename='About.png')}}" >
                     </a>
+                    <a href="/Equipe" class="texto-itens">Equipe</a>
                     <a href="/Sobre">
                         <img class="Item" id="Item3" src="{{ url_for('static', filename='Project.png')}}" >
                     </a>
-                </h2>
-                <h3 class="ExitEST">
-                        <img class="Exit" id="LogOut" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" >
-                </h3>   
+                    <a href="/Sobre" class="texto-itens">Sobre o TimeSync</a>
+                    <div class="ExitEST">
+                        <img class="Exit" id="LogOut" src="{{ url_for('static', filename='Exit.png')}}" alt="Log out?" > 
+                    </div>
+                    <a href="/logout" class="texto-itens">Sair</a>
+                </div> 
             </div>
         </div>
         <div class="SairBack" id="SairBack">
@@ -135,30 +135,12 @@
                                 <p class="MemTit">Membros</p>
                             </div>
                             <div class="GCont">
+                                <div class="icon-container">
                                     <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
+                                </div>
                                     <p class="IT">PLACEHOLDER</p>
                                     <p class="Num">100</p>
-                            </div>
-                            <div class="GCont">
-                                <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
-                                <p class="IT">PLACEHOLDER</p>
-                                <p class="Num">100</p>
-                            </div>
-                            <div class="GCont">
-                                <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
-                                <p class="IT">PLACEHOLDER</p>
-                                <p class="Num">100</p>
-                            </div>    
-                            <div class="GCont">
-                                <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
-                                <p class="IT">PLACEHOLDER</p>
-                                <p class="Num">100</p>
-                            </div>
-                            <div class="GCont">
-                                <img class="Icon" src="{{ url_for('static', filename='Icon.png')}}">
-                                <p class="IT">PLACEHOLDER</p>
-                                <p class="Num">100</p>
-                            </div>                    
+                            </div>            
                         </div>
                         <div class="AltaEST">
                             <p class="Alta">Recomendados para você</p>
@@ -171,7 +153,9 @@
                                 <p class="MemTit">Membros</p>
                             </div>
                             <div class="GCont">
+                                <div class="icon-container">
                                     <img class="Icon" src="{{ url_for('static', filename='Icon2.png')}}">
+                                </div>
                                     <p class="IT">Amogus</p>
                                     <p class="Num">100</p>
                             </div>
@@ -243,11 +227,12 @@
 </script>
 <script>
                 document.getElementById("LogOut").addEventListener("click", function() {
-                    document.getElementById("SairTamanhoEST").classList.toggle("show");
-                });
-
-                document.getElementById("LogOut").addEventListener("click", function() {
-                    document.getElementById("SairBack").classList.toggle("show");
+                    if(window.innerWidth / window.innerHeight > 1200/1000) {
+                        document.getElementById("SairTamanhoEST").classList.toggle("show");
+                        document.getElementById("SairBack").classList.toggle("show");
+                    }else {
+                        window.location = "/logout"
+                    }
                 });
 
                 document.getElementById("CancelButton").addEventListener("click", function() {

@@ -3,12 +3,14 @@
     margin: 0;
     padding: 0;
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     align-items: center;
     justify-items: center;
 }
 
 .logo-estilo { 
-    width: 50%;
+    max-width: 728px;
     height: auto;
 }
 
@@ -18,7 +20,7 @@
 }
 
 .login {
-    width: 18.2%;
+    width: 18.2vmax;
     height: 21vh;
     display: grid;
     grid-template-columns: 1fr;
@@ -29,13 +31,13 @@
 }
 
 .login-input {
-box-sizing: border-box;
-background: #FFFFFF;
-border: 1px solid #000000;
-border-radius: 35px;
-height: 75%;
-width: 100%;
-padding-left: 10%;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 35px;
+    height: 75%;
+    width: 100%;                                                                                           
+    padding-left: 10%;
 }
 
 .texto, .flashes{
@@ -55,14 +57,15 @@ padding-left: 10%;
 }
 
 .button-login {
-width: 50%;
-height: 50%;
-background: #5BC0BE;
-border-radius: 35px;
-display: grid;
-align-items: center;
-justify-items: center;
-user-select: none;
-cursor: pointer;
+    max-width: 100px;
+    width: 70%;
+    height: 70%;
+    background: #5BC0BE;
+    border-radius: 35px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    user-select: none;
+    cursor: pointer;
 }
 

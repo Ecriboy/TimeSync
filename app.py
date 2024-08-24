@@ -1,9 +1,16 @@
 from flask import *
 import calendar 
 import os
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import re
+
+
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(12) 
+
 
 @app.route('/Logout', methods=['GET', 'POST'])
 def login():

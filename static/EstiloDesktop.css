@@ -1,24 +1,31 @@
 /* Pagina Geral */
 
 
+html {
+    overflow-y: auto;
+    scrollbar-color: #5BC0BE #1C2541;
+    height: 100%;
+}
 
 .Principal {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.4fr 1fr;
     height: 0;
+    height: 100%;
 }
 
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 .corpo {
-    width: 120%;
-    height: 75%;
+    width: 70%;
+    height: 60%;
     user-select: none;
-    display: grid;
+    display: none; /* grid */;
     grid-template-rows: repeat(7, 1fr);
     grid-template-columns: repeat(7, 1fr);
     justify-items: center;
@@ -29,7 +36,7 @@ body {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 100%;
     margin: 0;
     /* identical to box height, or 94% */
     align-self: start;
@@ -53,9 +60,13 @@ body {
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     align-items: center;
     justify-content: center;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     top: 0;
+    align-content: center;
     user-select: none;
+    justify-items: center;
 }
 
 .NavContainer{
@@ -92,8 +103,7 @@ body {
 
 .logo {
     text-align: center;
-    width: 100%;
-    height: 100%;
+    width: 60%;
     user-select: none;
 }
 
@@ -105,12 +115,14 @@ body {
 }
 
 .linhasCON {
+    width: 100%;
+    height: 100%;
     align-items: center;
-    justify-content: center;
     top: 0;
     display: flex;
     user-select: none;
     text-align: center;
+    margin: 0;
 }
 
 .linhasEST {
@@ -118,7 +130,8 @@ body {
     max-height: 23px;
     width: 100%;
     height: 100%;
-    position: absolute;
+    margin-left: 4%;
+    justify-self: start;
 }
 
 .linhasEST:hover .linhas {
@@ -143,7 +156,6 @@ body {
     height: auto;
     margin-right: 2%;
     right: 0;
-    position: absolute;
 }
 
 .UserEST:hover .User {
@@ -155,17 +167,22 @@ body {
     height: 100%;
     max-width: 72px;
     max-height: 73px;
+    justify-self: end;
+    margin-right: 4%;
 }
 
 .sidebar {
     width: 0;
     height: 100%;
     position: fixed;
+    display: grid;
+    grid-template-rows: 0.12fr;
+    align-items: center;
     top: 0;
     left: 0;
     background-color: #1C2541;
     overflow-x: hidden;
-    transition: width 0.5s; /* Adiciona uma transição suave para a largura da barra lateral */
+    transition: width 0.15s; /* Adiciona uma transição suave para a largura da barra lateral */
 }
 
 .sidebar.show {
@@ -336,8 +353,13 @@ body {
 }
 
 .ItensEST {
+    height: 100%;
     text-align: center;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-self: self-start;
+    align-items: center;
+    justify-items: center;
 }
 
 .ItensEST:hover .Item {
@@ -346,15 +368,20 @@ body {
 
 .Item{
     width: 100%;
-    height: 100%;
     max-width: 50px;
     max-height: 50px;
     margin-bottom: 25%;
 }
 
+.texto-itens {
+    display: none;
+}
+
 .ExitEST {
     text-align: center;
-    display: block;
+    display: flex;
+    margin: 0;
+    flex-grow: 1;
 }
 
 .ExitEST:hover .Exit {
@@ -364,14 +391,10 @@ body {
 
 .Exit {
     width: 100%;
-    height: 100%;
     max-width: 50px;
     max-height: 50px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin-left: 20px; /* Ajuste o valor conforme necessário */
-    margin-bottom: 20px; /* Ajuste o valor conforme necessário */
+    align-self: flex-end;
+    margin-bottom: 10%;
 }
 
 
@@ -379,6 +402,7 @@ body {
 
 .macacada {
     margin-bottom: 16vh;
+    display: none;
 }
 
 .Slogan {
@@ -390,7 +414,7 @@ body {
     align-self: center;
     text-align: center;
     color: #FFFFFF;
-    margin-bottom: 4%;
+    margin-bottom: 0;
     user-select: none;
 }
 
@@ -405,9 +429,9 @@ body {
     align-items: center;
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 0.5fr;
+    grid-template-rows: 0.1fr 0.8fr;
     width: 100%;
-    height: 0;
+    height: 100%;
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
@@ -443,7 +467,7 @@ body {
     text-align: center;
     color: #FFFFFF;
     border-bottom: 1px solid #FFFFFF;
-    padding-bottom: 10px;
+    padding-bottom: 2%;
     user-select: none;
     margin-bottom: 4%;
     align-self: end;
@@ -458,12 +482,9 @@ body {
     background-color: #5B718B;
     margin: 0 auto;
     padding: 0;
-    width: 43.334%;
+    width: 55%;
     height: 100%;
     border-radius: 10px;
-    /*padding-bottom: 50px;*/
-    padding-left: 10%;
-    padding-right: 10%;
     align-self: self-start;
     display: flex;
     flex-flow: column;
@@ -472,10 +493,10 @@ body {
 
 .tabela-est {
     justify-items: center;
-    display: grid;
+    display: none; /* grid */
     grid-template-columns: 0.25fr 1fr 0.25fr;
     grid-template-rows: repeat(2, 1fr);
-    width: 120%;
+    width: 80%;
     align-items: center;
     margin-top: 10%;
 }
@@ -499,7 +520,7 @@ body {
 
 .fds {
     color: #6FFFE9;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
 }
@@ -509,17 +530,21 @@ body {
 }
 
 .dias {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
+}
+
+:root {
+    --ball-size: 30px;
 }
 
 #diasEST:hover {
     cursor: pointer;
     background-color: #E0E0E0;
     border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    height: var(--ball-size);
+    width: var(--ball-size);
     display: inline-block;
 }
 
@@ -575,12 +600,10 @@ body {
 */
 
 .Grupos {
-    max-width: 520px;
-    max-height: 602px;
-    width: 100%;
+    display: grid;
+    width: 55%;
     height: 100%;
     align-self: center;
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -633,13 +656,10 @@ body {
 }
 
 .GruposEST {
-    max-width: 520px;
-    max-height: 520px;
-    width: 100%;
-    height: 100vh;
     background-color: #1C2541;
     border-radius: 8px;
-    align-self: center;
+    height: 100%;
+    align-self: self-start;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -684,8 +704,6 @@ body {
 
 .GCont {
     width: 100%;
-    max-height: 55px;
-    height: 100vh;
     display: grid;
     grid-template-columns: 0.5fr 1fr 0.65fr;
     align-items: center;
@@ -719,11 +737,9 @@ body {
 
 .IT {
     height: auto;
-    max-width: 200px;
-    width: 100%;
+    /*max-width: 200px;*/
     padding: 0;
     vertical-align: middle;
-    max-width: 125px;
     width: 100%;
     max-height: 21px;
     font-family: 'Nunito';
@@ -732,6 +748,7 @@ body {
     font-size: 24px;
     line-height: 22px;
     color: #FFFFFF;
+    text-align: center;
 }
 
 .MemTit {
@@ -739,20 +756,14 @@ body {
 }
 
 .Num {
-    max-width: 138px;
-    width: 100%;
-    max-height: 21px;
-    height: 100vh;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
     line-height: 22px;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .Icon {
