@@ -126,4 +126,12 @@
         max-width: 728px;
         height: auto;
     }
+
+    .sobre-png {
+        width: 100% !important;
+    }
+
+    .button-continuar {
+        font-size: large !important;
+    }
 }
