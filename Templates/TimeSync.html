@@ -109,6 +109,36 @@
                                             .dias{font-family: 'Nunito'}             
                                             </style>
                                             {{ dia['dia'] }}
+                                            <div class="eventos">
+                                                {% if dia["eventos"]%}
+                                                    <p>Eventos</p>
+                                                    {% for evento in dia["eventos"] %}
+                                                        <p>{{ evento["modalidade"] }}</p>
+                                                        <p>{{ foda2(evento["horario_comeco"]) }} - {{ foda2(evento["horario_fim"]) }}</p>
+                                                        <p>Importância: <b class="{{ evento['importancia'] }}">{{ foda3(evento["importancia"]) }}</b></p>
+                                                        <p>Local: {{ evento["local"] }}</p>
+                                                        <div class="separador-evento"></div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <p>Criar Evento</p>
+                                                <form method="POST">
+                                                    <label for="importancia">Importância</label>
+                                                    <select name="importancia">
+                                                        <option value="baixa" selected>Baixa</option>
+                                                        <option value="media">Média</option>
+                                                        <option value="alta">Alta</option>
+                                                    </select>
+                                                    <input type="text" name="modalidade" placeholder="Modalidade" required>
+                                                    <div class="evento-tempo">
+                                                        <input type="time" name="horario_comeco" required>
+                                                        <b>-</b>
+                                                        <input type="time" name="horario_fim" required>
+                                                    </div>
+                                                    <input type="text" name="local"  placeholder="Local/Link" required>
+                                                    <input type="date" name="dia" style="display: none;" readonly value="{{ dia['ano'] }}-{{ foda(dia['mes']) }}-{{ foda(dia['dia']) }}">
+                                                    <input type="submit" value="Criar">
+                                                </form>
+                                            </div>
                                         </span>
                                     </div>
                                 {% endfor %}

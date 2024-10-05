@@ -11,11 +11,17 @@ from hashlib import sha256
 app = Flask(__name__)
 app.secret_key = os.urandom(12) 
 
-
+# Se o site nn pegar e pq eu esqueci de mudar essa prr pro teu login
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'user'
-app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_USER'] = 'root' # muda pra user
+app.config['MYSQL_PASSWORD'] = 'abc12345' # muda pra password
 app.config['MYSQL_DB'] = 'mydb'
+
+app.jinja_env.globals.update(
+    foda=lambda a: str(a).zfill(2), 
+    foda2=lambda a: str(a)[:-3], 
+    foda3=lambda a: {"baixa": "Baixa", "media": "Média", "alta": "Alta"}[a]
+)
 
 mysql = MySQL(app)
 
@@ -112,14 +118,46 @@ def sobre():
         return render_template('Logout.html')
     return render_template('Sobre.html')    
 
+def list_fetch(fetch):
+    return list(map(lambda a: list(a.values())[0], fetch))
+
+def date_to_string(date):
+    return f"{str(date.day).zfill(2)}/{str(date.month).zfill(2)}/{date.year}"
+
+def contagem_foda(cursor):
+    cursor.execute("SELECT COUNT(*) FROM tb_eventos")
+    print("Eventos totais:", list(cursor.fetchone().values())[0])
+
+    cursor.execute("SELECT dia FROM tb_eventos GROUP BY dia")
+    dias = list(map(date_to_string, list_fetch(cursor.fetchall())))
+    cursor.execute("SELECT COUNT(dia) FROM tb_eventos GROUP BY dia")
+    print("Quantidade de eventos em cada dia:", dict(zip(dias, list_fetch(cursor.fetchall()))))
+    
+    cursor.execute("SELECT COUNT(dia) FROM tb_eventos  WHERE importancia = \"baixa\"")
+    print("Eventos com importância baixa:", list(cursor.fetchone().values())[0])
+
+    cursor.execute("SELECT COUNT(dia) FROM tb_eventos  WHERE importancia = \"media\"")
+    print("Eventos com importância média:", list(cursor.fetchone().values())[0])
+
+    cursor.execute("SELECT COUNT(dia) FROM tb_eventos  WHERE importancia = \"alta\"")
+    print("Eventos com importância alta:", list(cursor.fetchone().values())[0])
+
+    cursor.execute("SELECT distinct dia FROM tb_eventos")
+    dias = list(map(date_to_string, list_fetch(cursor.fetchall())))
+    print(f"Dias com eventos ({len(dias)})", dias)
+
 @app.route('/')
-@app.route('/Home') 
+@app.route('/Home', methods=["GET", "POST"]) 
 def index():
     """
     Função para renderizar a página inicial.
     """
     if not session.get('loggedin'):
         return render_template('Logout.html')
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.form:
+        cursor.execute(f'INSERT INTO tb_eventos VALUES (str_to_date("{request.form["dia"]}", "%Y-%m-%d"), "{request.form["horario_comeco"]}", "{request.form["horario_fim"]}", "{request.form["modalidade"]}", "{request.form["importancia"]}", "{request.form["local"]}", "{session.get("username")}")')
+        mysql.connection.commit()
     
     # Mapeamento de nomes de meses em português para números
     meses = {
@@ -173,7 +211,11 @@ def index():
         ano_anterior = ano
 
     num_dias_mes_anterior = calendar.monthrange(ano_anterior, mes_anterior)[1]
-
+    true_mes = mes_num - 1
+    true_ano = ano
+    if true_mes <= 0:
+        true_mes = 12
+        true_ano = ano - 1
     # Preencher os dias do mês anterior
     for i in range(primeiro_dia_semana):
         dia_anterior = num_dias_mes_anterior - (primeiro_dia_semana - i - 1)
@@ -183,11 +225,12 @@ def index():
         classe = 'fds' if dia_semana == 6 or dia_semana == 0 else 'prev-month'
         feriado = 'Feriado' if classe == 'fds' else ''
 
-        dias.append({'id': '', 'dia': dia_anterior, 'class': classe, 'feriado': feriado})
-
+        dias.append({'id': '', 'dia': dia_anterior, 'class': classe, 'feriado': feriado, 'mes': true_mes, 'ano': true_ano})
+    true_mes = mes_num
+    true_ano = ano
     # Preencher os dias do mês atual
     for i in range(1, num_dias + 1):
-        dia = {'id': i, 'dia': i, 'class': '', 'feriado': ''}
+        dia = {'id': i, 'dia': i, 'class': '', 'feriado': '', 'mes': true_mes, 'ano': true_ano}
         dia_semana = (primeiro_dia_semana + i - 1) % 7
 
         # Verificar se é sábado (6) ou domingo (0) e marcar como feriado
@@ -196,9 +239,12 @@ def index():
             dia['feriado'] = 'Feriado'
         else:
             dia['class'] = 'dias'
-
         dias.append(dia)
 
+    true_mes = mes_num + 1
+    if true_mes > 12:
+        true_mes = 1
+        true_ano = ano + 1
     # Preencher os dias do próximo mês para completar 42 células
     proximo_dia = 1
     if mes_num == 12:
@@ -215,15 +261,23 @@ def index():
         classe = 'fds' if dia_semana == 6 or dia_semana == 0 else 'dias'
         if proximo_dia > num_dias_proximo_mes:
             proximo_dia = 1
-        dias.append({'id': '', 'dia': proximo_dia, 'class': classe, 'feriado': 'Feriado' if classe == 'fds' else ''})
+        dias.append({'ano': true_ano, 'mes': true_mes, 'id': '', 'dia': proximo_dia, 'class': classe, 'feriado': 'Feriado' if classe == 'fds' else ''})
         proximo_dia += 1
 
     # Debugging: print variables to check values
     print(f"Month: {mes_num}, Year: {ano}")
-    
+    cursor.execute(f"SELECT * from tb_eventos WHERE nome_usuario_fk = \"{session.get("username")}\"")
+    eventos = cursor.fetchall()
+    for evento in eventos:
+        for dia in dias:
+            if dia["dia"] != evento["dia"].day or dia["mes"] != evento["dia"].month or dia["ano"] != evento["dia"].year:
+                continue
+            dia["class"] += " evento"
+            if "eventos" not in dia:
+                dia["eventos"] = []
+            dia["eventos"].append(evento)
+    contagem_foda(cursor)
     return render_template('TimeSync.html', title=title, dias=dias, ano=ano)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

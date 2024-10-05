@@ -1,5 +1,9 @@
 @media screen and (max-aspect-ratio: 1200/1000 ) {
 
+    .eventos {
+        transform: translateX(-50%);
+        max-width: 30vw;
+    }
 
     .Centro  {
         display: flex;

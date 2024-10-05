@@ -148,6 +148,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`TB_USUARIO_has_TB_GRUPO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+DROP TABLE IF EXISTS `mydb`.`tb_eventos` ;
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_eventos` (
+	`dia` DATE NOT NULL,
+	`horario_comeco` TIME NOT NULL,
+	`horario_fim` TIME NOT NULL,
+	`modalidade` VARCHAR(64) NOT NULL,
+	`importancia` VARCHAR(64) NOT NULL,
+	`local` VARCHAR(256) NOT NULL,
+  `nome_usuario_fk` VARCHAR(200) NOT NULL,
+  FOREIGN KEY (`nome_usuario_fk`) REFERENCES `tb_usuario`(`nome_usuario`)
+);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

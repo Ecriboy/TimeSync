@@ -21,6 +21,17 @@ window.addEventListener("load", () => {
         let query = /** @type {HTMLInputElement}*/ (ev.target).value;
         search(query, defaultGroups);
     });
+
+    [...document.getElementsByClassName("dias")].forEach(dia => {
+        dia.addEventListener("click", () => {
+            /** @type {HTMLElement} */ (dia.getElementsByClassName("eventos")[0]).style.visibility = "visible";
+        });
+        window.addEventListener("click", ev => {
+            if(!dia.contains(/** @type {HTMLElement} */ (ev.target))) {
+                /** @type {HTMLElement} */ (dia.getElementsByClassName("eventos")[0]).style.visibility = "hidden";
+            }
+        });
+    });
 });
 
 function FitGrupoText(Groups) {
@@ -76,5 +87,4 @@ function search(query, defaultGroups) {
         groupList.appendChild(group);
     })
 }
-
 

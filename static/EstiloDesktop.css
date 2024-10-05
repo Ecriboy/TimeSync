@@ -525,11 +525,113 @@ body {
     text-align: center;
 }
 
-.prev-month{
+.evento {
+    color: #b00000;
+    position: relative;
+}
+
+.separador-evento {
+    background-color: #6FFFE9;
+    width: 80%;
+    height: 1px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.eventos {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #0B132B;
+    border-radius: 10px 10px;
+    padding: 10%;
+    outline: 2px solid #5BC0BE;
+    white-space: pre;
+    z-index: 15;
+    left: 100%;
+    max-height: 50vh;
+    overflow-y: auto;
+    transform: translateY(-50%);
+}
+
+.eventos > p, .eventos > form > label, .evento-tempo > b {
+    color: white;
+    margin: 0;
+}
+
+.eventos > form {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+}
+
+.eventos > form > label {
+    width: 80%;
+    text-align: left;
+}
+
+.evento-tempo > input {
+    width: 100px;
+}
+
+.eventos > form > input[type="text"], 
+.eventos > form > input[type="submit"],
+.eventos > form > select,
+.evento-tempo {
+    padding: 0;
+    width: 80%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+}
+
+.eventos > form > input[type="text"], 
+.eventos > form > input[type="submit"],
+.eventos > form > select,
+.evento-tempo > input {
+    background: transparent;
+    border: none;
+    color: white;
+    border-bottom: 1px solid #6FFFE9;
+}
+
+.eventos > form > select option {
+    background-color: #0B132B;
+    border-width: 0;
+    padding: 0;
+}
+
+.eventos > form > input[type="submit"] {
+    border: 1px dashed #6FFFE9;
+}
+
+.eventos > form > input[type="text"]:focus, 
+.eventos > form > input[type="submit"]:focus,
+.eventos > form > select:focus,
+.evento-tempo > input:focus {
+    outline: none;
+}
+
+
+.eventos > form > input[type="submit"] {
+    width: 50%;
+}
+
+
+.evento-tempo {
+    display: flex;
+}
+
+.prev-month {
     text-align: center;
 }
 
 .dias {
+    position: relative;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
@@ -539,13 +641,8 @@ body {
     --ball-size: 30px;
 }
 
-#diasEST:hover {
-    cursor: pointer;
-    background-color: #E0E0E0;
-    border-radius: 50%;
-    height: var(--ball-size);
-    width: var(--ball-size);
-    display: inline-block;
+.dias:hover {
+    color: #E0E0E0;
 }
 
 .Butfoward {
@@ -832,6 +929,17 @@ body {
     user-select: none;
 }
 
+.baixa {
+    color: lime;
+}
+
+.media {
+    color: yellow;
+}
+
+.alta {
+    color: red;
+}
 
 /* 
     Fim da estilização dos Grupos
