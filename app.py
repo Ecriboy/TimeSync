@@ -13,14 +13,14 @@ app.secret_key = os.urandom(12)
 
 # Se o site nn pegar e pq eu esqueci de mudar essa prr pro teu login
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root' # muda pra user
-app.config['MYSQL_PASSWORD'] = 'abc12345' # muda pra password
+app.config['MYSQL_USER'] = 'user' # muda pra user
+app.config['MYSQL_PASSWORD'] = 'password' # muda pra password
 app.config['MYSQL_DB'] = 'mydb'
 
 app.jinja_env.globals.update(
-    foda=lambda a: str(a).zfill(2), 
-    foda2=lambda a: str(a)[:-3], 
-    foda3=lambda a: {"baixa": "Baixa", "media": "Média", "alta": "Alta"}[a]
+    nomeevento=lambda a: str(a).zfill(2), 
+    horario=lambda a: str(a)[:-3], 
+    prioridade=lambda a: {"baixa": "Baixa", "media": "Média", "alta": "Alta"}[a]
 )
 
 mysql = MySQL(app)
@@ -124,7 +124,7 @@ def list_fetch(fetch):
 def date_to_string(date):
     return f"{str(date.day).zfill(2)}/{str(date.month).zfill(2)}/{date.year}"
 
-def contagem_foda(cursor):
+def contagem_console(cursor):
     cursor.execute("SELECT COUNT(*) FROM tb_eventos")
     print("Eventos totais:", list(cursor.fetchone().values())[0])
 
@@ -266,7 +266,7 @@ def index():
 
     # Debugging: print variables to check values
     print(f"Month: {mes_num}, Year: {ano}")
-    cursor.execute(f"SELECT * from tb_eventos WHERE nome_usuario_fk = \"{session.get("username")}\"")
+    cursor.execute(f"SELECT * from tb_eventos WHERE nome_usuario_fk = \"{session.get('username')}\"")
     eventos = cursor.fetchall()
     for evento in eventos:
         for dia in dias:
@@ -276,7 +276,7 @@ def index():
             if "eventos" not in dia:
                 dia["eventos"] = []
             dia["eventos"].append(evento)
-    contagem_foda(cursor)
+    contagem_console(cursor)
     return render_template('TimeSync.html', title=title, dias=dias, ano=ano)
 
 if __name__ == '__main__':

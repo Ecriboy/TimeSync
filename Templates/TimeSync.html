@@ -114,8 +114,8 @@
                                                     <p>Eventos</p>
                                                     {% for evento in dia["eventos"] %}
                                                         <p>{{ evento["modalidade"] }}</p>
-                                                        <p>{{ foda2(evento["horario_comeco"]) }} - {{ foda2(evento["horario_fim"]) }}</p>
-                                                        <p>Importância: <b class="{{ evento['importancia'] }}">{{ foda3(evento["importancia"]) }}</b></p>
+                                                        <p>{{ horario(evento["horario_comeco"]) }} - {{ horario(evento["horario_fim"]) }}</p>
+                                                        <p>Importância: <b class="{{ evento['importancia'] }}">{{prioridade(evento["importancia"]) }}</b></p>
                                                         <p>Local: {{ evento["local"] }}</p>
                                                         <div class="separador-evento"></div>
                                                     {% endfor %}
@@ -135,7 +135,7 @@
                                                         <input type="time" name="horario_fim" required>
                                                     </div>
                                                     <input type="text" name="local"  placeholder="Local/Link" required>
-                                                    <input type="date" name="dia" style="display: none;" readonly value="{{ dia['ano'] }}-{{ foda(dia['mes']) }}-{{ foda(dia['dia']) }}">
+                                                    <input type="date" name="dia" style="display: none;" readonly value="{{ dia['ano'] }}-{{ nomeevento(dia['mes']) }}-{{ nomeevento(dia['dia']) }}">
                                                     <input type="submit" value="Criar">
                                                 </form>
                                             </div>
