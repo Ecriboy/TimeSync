@@ -5,6 +5,8 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 from hashlib import sha256
+from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 
@@ -111,6 +113,51 @@ def equipe():
     
 
     return render_template('Equipe.html')
+
+auth = HTTPBasicAuth()
+
+users = {
+    "adm": generate_password_hash("1234")
+}
+
+@auth.verify_password
+def verify_password(username, password):
+    if username in users and \
+            check_password_hash(users.get(username), password):
+        return username
+
+
+
+@app.route('/Adm', methods=['GET', 'POST'])
+@auth.login_required
+def Adm():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.method == 'POST':
+        dicio = {}
+        for x, y in request.form.items():
+            filtro = x.split("-")
+            if len(filtro) < 2:
+                continue
+            if not filtro[0] in dicio:
+                dicio[filtro[0]] = {}
+            dicio[filtro[0]][filtro[1]] = y
+        for x, y in dicio.items():
+            if "delete" in y:
+                cursor.execute(f"DELETE FROM tb_usuario WHERE nome_usuario='{x}'")
+                continue
+            for k, v in y.items():
+                if k == "senha":
+                    senhanova = sha256(v.encode("utf-8")).hexdigest()
+                    cursor.execute(f"UPDATE tb_usuario SET {k}=0x{senhanova} WHERE nome_usuario='{x}'")
+                    continue
+                cursor.execute(f"UPDATE tb_usuario SET {k}='{v}' WHERE nome_usuario='{x}'")
+                print(dicio)
+        mysql.connection.commit()
+
+
+    cursor.execute("SELECT nome_usuario, nome, email_usuario, data_nascimento, cidade FROM TB_usuario")
+    usuarios = cursor.fetchall()
+    return render_template('Adm.html', usuarios=usuarios)
 
 @app.route('/Sobre')
 def sobre():
@@ -264,7 +311,6 @@ def index():
         dias.append({'ano': true_ano, 'mes': true_mes, 'id': '', 'dia': proximo_dia, 'class': classe, 'feriado': 'Feriado' if classe == 'fds' else ''})
         proximo_dia += 1
 
-    # Debugging: print variables to check values
     print(f"Month: {mes_num}, Year: {ano}")
     cursor.execute(f"SELECT * from tb_eventos WHERE nome_usuario_fk = \"{session.get('username')}\"")
     eventos = cursor.fetchall()

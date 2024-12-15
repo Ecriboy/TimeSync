@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeSync</title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href="{{ url_for('static', filename='EstiloDesktop.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloMobile.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloSobre.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='EstiloEquipe.css')}}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
+    <script src="static/script.js"></script>
+    <script src="static/script2.js"></script>
+</head>
+<body class="corpagina">
+    <form action="{{ url_for('Adm') }}" method="POST">
+        {% for user in usuarios %}
+            <div>
+                <input type="text" name="{{user['nome_usuario']}}" value="{{user['nome_usuario']}}" readonly>
+                <input type="text" name="{{user['nome_usuario']}}-nome" value="{{user['nome']}}">
+                <input type="text" name="{{user['nome_usuario']}}-email_usuario" value="{{user['email_usuario']}}">
+                <input type="text" name="{{user['nome_usuario']}}-data_nascimento" value="{{user['data_nascimento']}}">
+                <input type="text" name="{{user['nome_usuario']}}-cidade" value="{{user['cidade']}}">
+                <input type="text" name="{{user['nome_usuario']}}-senha" placeholder="senha">
+                <input type="checkbox" name="{{user['nome_usuario']}}-delete">
+            </div>
+        {% endfor %}
+        <button type="submit">
+            Confirmar
+        </button>
+    </form>
+
+
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    document.getElementById("linhasDiv").addEventListener("click", function() {
+        document.getElementById("sidebar").classList.toggle("show");
+    });
+
+    document.getElementById("LinhasDiv2").addEventListener("click", function() {
+        document.getElementById("sidebar").classList.toggle("show");
+    });
+</script>
+<script>
+    const input = document.getElementById('GrupoTit');
+
+    // Adicione um evento de foco ao input
+    input.addEventListener('focus', function() {
+        // Quando o input recebe foco, remova o placeholder
+        input.removeAttribute('placeholder');
+    });
+
+    // Adicione um evento de desfoque ao input
+    input.addEventListener('blur', function() {
+        // Quando o input perde foco e não tem valor, adicione o placeholder de volta
+        if (!input.value.trim()) {
+            input.setAttribute('placeholder', 'PESQUISAR GRUPOS');
+        }
+    });
+</script>
+<script>
+    document.getElementById("LogOut").addEventListener("click", function() {
+        if(window.innerWidth / window.innerHeight > 1200/1000) {
+            document.getElementById("SairTamanhoEST").classList.toggle("show");
+            document.getElementById("SairBack").classList.toggle("show");
+        }else {
+            window.location = "/logout"
+        }
+    });
+
+    document.getElementById("CancelButton").addEventListener("click", function() {
+        document.getElementById("SairTamanhoEST").classList.toggle("show");
+    });
+
+    document.getElementById("CancelButton").addEventListener("click", function() {
+        document.getElementById("SairBack").classList.toggle("show");
+    });
+</script>
